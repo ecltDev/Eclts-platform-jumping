@@ -1,0 +1,5 @@
+# 忽略Godot编辑器配置文件
+.godot/
+.editorconfig
+# Android 系统无媒体占位文件
+.nomedia
