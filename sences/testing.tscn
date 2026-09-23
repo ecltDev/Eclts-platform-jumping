@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cx4imkrpqkh6c"]
+
+[ext_resource type="Texture2D" uid="uid://dlotffe488apw" path="res://sprites/white.png" id="1_qrja6"]
+[ext_resource type="PackedScene" uid="uid://c6toq5yk2nial" path="res://sences/objects/save.tscn" id="2_udet3"]
+[ext_resource type="PackedScene" uid="uid://ljnkl37nmm8u" path="res://sences/objects/spike.tscn" id="3_4abjp"]
+
+[node name="Testing" type="Node2D" unique_id=1102147432]
+
+[node name="Objects" type="Node2D" parent="." unique_id=265540277]
+
+[node name="Walls" type="Node2D" parent="Objects" unique_id=1350834329]
+
+[node name="WallDown" type="Sprite2D" parent="Objects/Walls" unique_id=643350592]
+position = Vector2(8, 640)
+scale = Vector2(103.27273, 1.4545455)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/Walls/WallDown" unique_id=1304584158]
+position = Vector2(-0.0774648, -440.00003)
+scale = Vector2(0.0096831, 0.68750006)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Walls/WallDown/StaticBody2D" unique_id=1890981503]
+position = Vector2(8, 640)
+scale = Vector2(103.27273, 1.4545455)
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="WallLeft" type="Sprite2D" parent="Objects/Walls" unique_id=160568223]
+position = Vector2(8, 640)
+scale = Vector2(1.4545456, 57.454548)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/Walls/WallLeft" unique_id=1581258918]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Walls/WallLeft/StaticBody2D" unique_id=1766208963]
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="WallUp" type="Sprite2D" parent="Objects/Walls" unique_id=151133147]
+position = Vector2(7.999996, 24)
+scale = Vector2(103.27273, 1.4545455)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/Walls/WallUp" unique_id=323227528]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Walls/WallUp/StaticBody2D" unique_id=1383497176]
+scale = Vector2(1.0000001, 1.0000001)
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="WallRight" type="Sprite2D" parent="Objects/Walls" unique_id=1648251064]
+position = Vector2(1128, 640)
+scale = Vector2(1.4545456, 57.454548)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/Walls/WallRight" unique_id=779771612]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Walls/WallRight/StaticBody2D" unique_id=629048592]
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="WallDown" type="Sprite2D" parent="Objects" unique_id=800463617]
+position = Vector2(576, 480)
+scale = Vector2(1.548552, -13.851282)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/WallDown" unique_id=1092928580]
+position = Vector2(-0.0774648, -440.00003)
+scale = Vector2(0.0096831, 0.68750006)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/WallDown/StaticBody2D" unique_id=612044129]
+position = Vector2(8, 640)
+scale = Vector2(103.27273, 1.4545455)
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="WallDown2" type="Sprite2D" parent="Objects" unique_id=676365565]
+position = Vector2(640.00006, 360)
+scale = Vector2(45.272976, 1.4545455)
+texture = ExtResource("1_qrja6")
+centered = false
+offset = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/WallDown2" unique_id=1750377188]
+position = Vector2(-0.0774648, -440.00003)
+scale = Vector2(0.0096831, 0.68750006)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/WallDown2/StaticBody2D" unique_id=2073209865]
+position = Vector2(8, 640)
+scale = Vector2(103.27273, 1.4545455)
+polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
+
+[node name="Save" parent="Objects" unique_id=1002244357 instance=ExtResource("2_udet3")]
+position = Vector2(96, 600)
+
+[node name="Spike" parent="Objects" unique_id=2088511812 instance=ExtResource("3_4abjp")]
+position = Vector2(312, 592)
+
+[node name="Save2" parent="Objects" unique_id=412700913 instance=ExtResource("2_udet3")]
+position = Vector2(488, 600)
+
+[node name="Save3" parent="Objects" unique_id=1677497717 instance=ExtResource("2_udet3")]
+position = Vector2(224, 600)

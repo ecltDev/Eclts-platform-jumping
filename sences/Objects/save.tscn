@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c6toq5yk2nial"]
+
+[ext_resource type="PackedScene" uid="uid://cvijaksvw38q" path="res://sences/Objects/trigger_area.tscn" id="1_u0ucj"]
+[ext_resource type="Script" uid="uid://bqnubn8o8cod4" path="res://logic/components/save.gd" id="2_aweni"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ksgdn"]
+
+[node name="Save" type="Node2D" unique_id=1002244357]
+
+[node name="SpriteDemo" type="MeshInstance2D" parent="." unique_id=876829138]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(16, 16)
+mesh = SubResource("QuadMesh_ksgdn")
+
+[node name="TriggerArea" parent="." unique_id=243988703 instance=ExtResource("1_u0ucj")]
+
+[node name="SAVE" type="Node2D" parent="." unique_id=1726202416]
+script = ExtResource("2_aweni")
+metadata/_custom_type_script = "uid://bqnubn8o8cod4"

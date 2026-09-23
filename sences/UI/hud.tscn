@@ -1,0 +1,453 @@
+[gd_scene format=3 uid="uid://8ua0t006dkfm"]
+
+[ext_resource type="Script" uid="uid://iycqjs01q5d3" path="res://logic/UI/player_control_key.gd" id="1_dludm"]
+[ext_resource type="FontFile" uid="uid://ur1lnw61iwon" path="res://resource/fonts/VonwaonBitmap-12px.ttf" id="2_f31u7"]
+[ext_resource type="Script" uid="uid://4okluhfg31h2" path="res://logic/debugging_text.gd" id="3_iam71"]
+[ext_resource type="Script" uid="uid://dqu3te4055563" path="res://logic/UI/chatting_panel.gd" id="4_5jfx1"]
+[ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="4_yelkj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dludm"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f31u7"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iam71"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45j5j"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8h8d"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8coll"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgrr"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f616"]
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jfx1"]
+bg_color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="HUD" type="Control" unique_id=27509648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_horizontal_guides_ = [568.0]
+
+[node name="PlayerControl" type="Control" parent="." unique_id=1509812666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftterControl" type="Control" parent="PlayerControl" unique_id=2140747445]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = -240.0
+offset_right = 144.0
+offset_bottom = -200.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+
+[node name="MoveLeft" type="Panel" parent="PlayerControl/LeftterControl" unique_id=775911652]
+layout_mode = 0
+offset_top = -2.4414061e-05
+offset_right = 40.000004
+offset_bottom = 39.999977
+theme_override_styles/panel = SubResource("StyleBoxFlat_dludm")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="PlayerControl/LeftterControl/MoveLeft" unique_id=909895403]
+layout_mode = 0
+offset_left = 3.9999962
+offset_top = -7.9999847
+offset_right = 43.999996
+offset_bottom = 43.000015
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_font_sizes/font_size = 30
+text = "←"
+
+[node name="MoveRight" type="Panel" parent="PlayerControl/LeftterControl" unique_id=765445961]
+layout_mode = 0
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f31u7")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="PlayerControl/LeftterControl/MoveRight" unique_id=1407497655]
+layout_mode = 0
+offset_left = 4.799999
+offset_top = -7.9999847
+offset_right = 44.8
+offset_bottom = 43.000015
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_font_sizes/font_size = 30
+text = "→"
+
+[node name="RightterControl" type="Control" parent="PlayerControl" unique_id=1337850709]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -280.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(4, 4)
+
+[node name="Jump" type="Panel" parent="PlayerControl/RightterControl" unique_id=1051849440]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iam71")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="PlayerControl/RightterControl/Jump" unique_id=265598008]
+layout_mode = 0
+offset_left = 17.999996
+offset_top = -2.0
+offset_right = 57.999996
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_font_sizes/font_size = 26
+text = "J"
+
+[node name="Opeat" type="Panel" parent="PlayerControl/RightterControl" unique_id=101215125]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -22.0
+offset_right = 50.0
+offset_bottom = 18.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_45j5j")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="PlayerControl/RightterControl/Opeat" unique_id=1209833156]
+layout_mode = 0
+offset_left = 9.999996
+offset_top = 2.0
+offset_right = 49.999996
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_font_sizes/font_size = 26
+text = "O"
+
+[node name="Respawn" type="Panel" parent="PlayerControl/RightterControl" unique_id=1371263985]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l8h8d")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="PlayerControl/RightterControl/Respawn" unique_id=671492123]
+layout_mode = 0
+offset_left = 11.999996
+offset_right = 51.999996
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_font_sizes/font_size = 26
+text = "R"
+
+[node name="Debug" type="Panel" parent="." unique_id=2035169158]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8coll")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="Debug" unique_id=931594987]
+layout_mode = 0
+offset_left = 5.999996
+offset_top = 4.0
+offset_right = 90.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_font_sizes/font_size = 21
+text = "调试屏幕"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisplayKey" type="Panel" parent="." unique_id=1666002531]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -59.0
+offset_right = 58.666668
+offset_bottom = -16.333313
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5mgrr")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="DisplayKey" unique_id=1697102528]
+layout_mode = 0
+offset_left = 5.999996
+offset_top = 4.0
+offset_right = 37.333332
+offset_bottom = 35.555573
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_font_sizes/font_size = 21
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugOverlay" type="Control" parent="." unique_id=1713494682]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DetailLeft" type="Label" parent="DebugOverlay" unique_id=1320669623]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 19.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0f616")
+text = "Debug"
+script = ExtResource("3_iam71")
+
+[node name="DetailRight" type="Label" parent="DebugOverlay" unique_id=1218901984]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -55.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0f616")
+text = "Debug"
+horizontal_alignment = 2
+script = ExtResource("3_iam71")
+
+[node name="ChattingPanel" type="Control" parent="." unique_id=281181083]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InputBox" type="HSplitContainer" parent="ChattingPanel" unique_id=538166294]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+split_offsets = PackedInt32Array(54, 120, 170, 220, 308)
+collapsed = true
+split_offset = 54
+
+[node name="Fold" type="Button" parent="ChattingPanel/InputBox" unique_id=1771817241]
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
+text = " 收起 "
+script = ExtResource("4_5jfx1")
+
+[node name="Clear" type="Button" parent="ChattingPanel/InputBox" unique_id=468080718]
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
+text = " 清空 "
+script = ExtResource("4_5jfx1")
+
+[node name="LastOne" type="Button" parent="ChattingPanel/InputBox" unique_id=667746785]
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
+text = " ↑ "
+script = ExtResource("4_5jfx1")
+
+[node name="NextOne" type="Button" parent="ChattingPanel/InputBox" unique_id=1597875829]
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
+text = " ↓ "
+script = ExtResource("4_5jfx1")
+
+[node name="Send" type="Button" parent="ChattingPanel/InputBox" unique_id=249582759]
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
+text = "  发送  "
+script = ExtResource("4_5jfx1")
+
+[node name="InputBox" type="TextEdit" parent="ChattingPanel/InputBox" unique_id=832436990]
+layout_mode = 2
+theme = ExtResource("4_yelkj")
+theme_override_font_sizes/font_size = 33
+placeholder_text = "输入聊天文本"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChattingPanel" unique_id=574040161]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 608.0
+theme = ExtResource("4_yelkj")
+draw_focus_border = true
+tile_scroll_hint = true
+
+[node name="ChattingMessagesView" type="VBoxContainer" parent="ChattingPanel/ScrollContainer" unique_id=1138767049]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="ChattingPanel/ScrollContainer" unique_id=918450342]
+z_index = -2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.39215687)
+
+[connection signal="gui_input" from="PlayerControl/LeftterControl/MoveLeft" to="PlayerControl/LeftterControl/MoveLeft" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/LeftterControl/MoveRight" to="PlayerControl/LeftterControl/MoveRight" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RightterControl/Jump" to="PlayerControl/RightterControl/Jump" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RightterControl/Opeat" to="PlayerControl/RightterControl/Opeat" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RightterControl/Respawn" to="PlayerControl/RightterControl/Respawn" method="_on_player_action"]
+[connection signal="gui_input" from="Debug" to="Debug" method="_on_player_action"]
+[connection signal="gui_input" from="DisplayKey" to="DisplayKey" method="_on_player_action"]
+[connection signal="pressed" from="ChattingPanel/InputBox/Fold" to="ChattingPanel/InputBox/Fold" method="_on_action_take"]
+[connection signal="pressed" from="ChattingPanel/InputBox/Clear" to="ChattingPanel/InputBox/Clear" method="_on_action_take"]
+[connection signal="pressed" from="ChattingPanel/InputBox/LastOne" to="ChattingPanel/InputBox/LastOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattingPanel/InputBox/NextOne" to="ChattingPanel/InputBox/NextOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattingPanel/InputBox/Send" to="ChattingPanel/InputBox/Send" method="_on_action_take"]

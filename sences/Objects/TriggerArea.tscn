@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://0r76udjcouxw"]
+
+[ext_resource type="Script" uid="uid://m33stjsmbkis" path="res://logic/components/trigger_area.gd" id="1_l0hny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aweni"]
+size = Vector2(16, 16)
+
+[node name="TriggerArea" type="Area2D" unique_id=243988703]
+script = ExtResource("1_l0hny")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1225434043]
+shape = SubResource("RectangleShape2D_aweni")

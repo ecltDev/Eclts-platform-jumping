@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cer0nqrxeefsq"]
+
+[ext_resource type="Script" uid="uid://ccsj4usjqnnay" path="res://logic/player.gd" id="1_fgka1"]
+[ext_resource type="PackedScene" uid="uid://8ua0t006dkfm" path="res://sences/UI/hud.tscn" id="2_ch301"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_s5mkr"]
+
+[sub_resource type="Gradient" id="Gradient_fgka1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.3764706, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ch301"]
+gradient = SubResource("Gradient_fgka1")
+
+[node name="Player" type="CharacterBody2D" unique_id=112312554]
+scale = Vector2(1.999482, 2.272121)
+script = ExtResource("1_fgka1")
+
+[node name="PlayerSpriteDemo" type="MeshInstance2D" parent="." unique_id=1080798281]
+scale = Vector2(13.616, 29.76)
+mesh = SubResource("QuadMesh_s5mkr")
+texture = SubResource("GradientTexture1D_ch301")
+
+[node name="PlayerCollision" type="CollisionPolygon2D" parent="." unique_id=778733004]
+scale = Vector2(0.851, 1.86)
+polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=847535605]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="InteractDetect" type="Area2D" parent="." unique_id=1593457013]
+scale = Vector2(0.7937291, 0.77824587)
+
+[node name="InteractCollision" type="CollisionPolygon2D" parent="InteractDetect" unique_id=52583383]
+scale = Vector2(1.098, 2.4)
+polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1243705013]
+
+[node name="HUD" parent="UI" unique_id=27509648 instance=ExtResource("2_ch301")]
+
+[connection signal="area_entered" from="InteractDetect" to="." method="_on_interact_detect_area_entered"]
+[connection signal="area_exited" from="InteractDetect" to="." method="_on_interact_detect_area_exited"]
