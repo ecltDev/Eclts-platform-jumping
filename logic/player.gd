@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED:float = 260
-const JUMP_VELOCITY:float = -380
+@export_range(0,500,10,"Speed") var SPEED:float = 260
+@export_range(0,500,10,"Velocity")  var JUMP_VELOCITY:float = -380
 var rest_jumping_times:int = 2
 @onready var respawn_position = self.position
 var last_overlapping_unit:Area2D

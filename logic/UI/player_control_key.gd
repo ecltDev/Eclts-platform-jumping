@@ -10,7 +10,7 @@ func _ready() -> void:
 func _on_player_action(event: InputEvent) -> void:
 	# 可长按部分 同时检测按键和触屏
 	if event is InputEventScreenTouch or \
-	  (event is InputEventMouseButton and event.is_pressed()):
+	  (event is InputEventMouseButton):
 
 		# 左右移动
 		if (self.name == "MoveLeft" or

@@ -24,12 +24,13 @@ var DebugInfo:Dictionary[String,Variant] = {
 }
 var MainPlayer:CharacterBody2D = null
 var ISVertrulKeyMovementPressed:bool = false
+var RisingText:Resource = preload("res://sences/tiny_sence/Objects/rising_text.tscn")
 var FloattingText:Resource = preload("res://sences/tiny_sence/Objects/floatting_text.tscn")
 #Functions
-func Display_up_floatting_text(target_node:Node2D,text:String) -> void:
+func Display_up_rising_text(target_node:Node2D,text:String) -> void:
 	# 主要变量
-	var text_root:Node2D = EGG.FloattingText.instantiate()
-	var main_text = text_root.get_child(0)
+	var text_root:Node2D = EGG.RisingText.instantiate()
+	var main_text:RichTextLabel = text_root.get_child(0)
 	# 初始化变换
 	target_node.add_child(text_root)
 	text_root.position = Vector2(0,0)
@@ -51,3 +52,16 @@ func Display_up_floatting_text(target_node:Node2D,text:String) -> void:
 	text_destory_timer.start(0.4)
 	await text_destory_timer.timeout
 	text_root.queue_free()
+func display_floatting_text(target_node:Node2D,text:String = "Eclt",increment_y:float = 20) -> Node2D:
+	# 主要变量
+	var text_root:Node2D = EGG.FloattingText.instantiate()
+	var main_text:RichTextLabel = text_root.get_child(0)
+	# 添加FloattingText到TargetNode
+	target_node.add_child(text_root)
+	# 设置属性并等待一帧
+	text_root.position = Vector2(0,0)
+	main_text.text= text
+	await get_tree().process_frame
+	# 根据Target节点设置位置
+	text_root.position.y -= increment_y + main_text.size.y
+	return text_root

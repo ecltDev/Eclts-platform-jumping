@@ -13,6 +13,9 @@ scale = Vector2(16, 16)
 mesh = SubResource("QuadMesh_ksgdn")
 
 [node name="TriggerArea" parent="." unique_id=243988703 instance=ExtResource("1_u0ucj")]
+hint_text = "按下[color=yellow][O][/color]键设置重生点"
+auto_size = true
+trigger_target_name = "Player"
 
 [node name="SAVE" type="Node2D" parent="." unique_id=1726202416]
 script = ExtResource("2_aweni")
