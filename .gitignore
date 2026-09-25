@@ -3,3 +3,5 @@
 .editorconfig
 # Android 系统无媒体占位文件
 .nomedia
+# MT备份文件
+*.bak
