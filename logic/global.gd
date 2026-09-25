@@ -9,7 +9,7 @@ var DebugInfo:Dictionary[String,Variant] = {
 	"VersionType":"Dev",
 	"GameName":"Game",
 	"OSName":OS.get_name(),
-	"ProcessorName":OS.get_processor_name() ,
+	"ProcessorName":OS.get_processor_name(),
 	"VideoAdapterName":RenderingServer.get_video_adapter_name(),
 	"ArchitectureName":Engine.get_architecture_name(),
 	"MaxFPS":Engine.max_fps,

@@ -80,6 +80,20 @@ border_width_bottom = 5
 border_color = Color(0.8, 0.8, 0.8, 0.27450982)
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd3rk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.27450982)
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgrr"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -272,6 +286,37 @@ text = "调试屏幕"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ChattingKey" type="Panel" parent="." unique_id=263626091]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -223.99994
+offset_top = -56.0
+offset_right = -163.33331
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bd3rk")
+script = ExtResource("1_dludm")
+
+[node name="Label" type="Label" parent="ChattingKey" unique_id=144711018]
+layout_mode = 0
+offset_left = 5.999996
+offset_top = 4.0
+offset_right = 58.666622
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
+theme_override_fonts/font = ExtResource("2_f31u7")
+theme_override_font_sizes/font_size = 21
+text = "输入"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DisplayKey" type="Panel" parent="." unique_id=1666002531]
 layout_mode = 1
 anchors_preset = 2
@@ -432,19 +477,13 @@ size_flags_vertical = 3
 theme_override_constants/separation = 5
 alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="ChattingPanel/ScrollContainer" unique_id=918450342]
-z_index = -2
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 0.39215687)
-
 [connection signal="gui_input" from="PlayerControl/LeftterControl/MoveLeft" to="PlayerControl/LeftterControl/MoveLeft" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/LeftterControl/MoveRight" to="PlayerControl/LeftterControl/MoveRight" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/RightterControl/Jump" to="PlayerControl/RightterControl/Jump" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/RightterControl/Opeat" to="PlayerControl/RightterControl/Opeat" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/RightterControl/Respawn" to="PlayerControl/RightterControl/Respawn" method="_on_player_action"]
 [connection signal="gui_input" from="Debug" to="Debug" method="_on_player_action"]
+[connection signal="gui_input" from="ChattingKey" to="ChattingKey" method="_on_player_action"]
 [connection signal="gui_input" from="DisplayKey" to="DisplayKey" method="_on_player_action"]
 [connection signal="pressed" from="ChattingPanel/InputBox/Fold" to="ChattingPanel/InputBox/Fold" method="_on_action_take"]
 [connection signal="pressed" from="ChattingPanel/InputBox/Clear" to="ChattingPanel/InputBox/Clear" method="_on_action_take"]

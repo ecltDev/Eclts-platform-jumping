@@ -43,6 +43,11 @@ func _on_player_action(event: InputEvent) -> void:
 		  not event.is_pressed():
 			$"../PlayerControl".visible = not $"../PlayerControl".visible
 
+		# 显示聊天
+		else:if self.name == "ChattingKey" and \
+		  not event.is_pressed():
+			$"../ChattingPanel".visible = not $"../ChattingPanel".visible
+
 	# 设置按钮颜色变化(不在块内)
 	var key_color:Color
 	if event.is_pressed():
