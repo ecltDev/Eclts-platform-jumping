@@ -18,6 +18,9 @@ config/icon="res://sprites/icon.svg"
 [autoload]
 
 EGG="*uid://brvov4qamq87m"
+ChattingManager="*uid://qeh6ww81n84x"
+TextManager="*uid://bhkdtdbjcqm4u"
+DebugFunction="*uid://bqksxjpxgahnh"
 
 [debug]
 

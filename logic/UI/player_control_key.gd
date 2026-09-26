@@ -1,12 +1,14 @@
 extends Panel
+## 玩家控制相关
 
 var mepressed:bool = false
 
+# 初始动作
 func _ready() -> void:
 	# 电脑自动隐藏按键
-	if self.name == "DisplayKey":
+	if self.name == "DisplayKeys":
 		if OS.get_name() != "Android" or OS.get_name() == "iOS":$"../PlayerControl".visible = false
-		
+# 玩家控制按键按下
 func _on_player_action(event: InputEvent) -> void:
 	# 可长按部分 同时检测按键和触屏
 	if event is InputEventScreenTouch or \
@@ -34,19 +36,19 @@ func _on_player_action(event: InputEvent) -> void:
 	  event is InputEventMouseButton:
 
 		# 调试屏幕
-		if self.name == "Debug" and \
+		if self.name == "DisplayDebuggingOverlay" and \
 		   event.is_pressed():
-			$"../DebugOverlay".visible = not $"../DebugOverlay".visible
+			$"../DebuggingOverlay".visible = not $"../DebuggingOverlay".visible
 
 		# 显示按键
-		else:if self.name == "DisplayKey" and \
+		else:if self.name == "DisplayKeys" and \
 		  not event.is_pressed():
 			$"../PlayerControl".visible = not $"../PlayerControl".visible
 
 		# 显示聊天
-		else:if self.name == "ChattingKey" and \
+		else:if self.name == "OpenChattyPanel" and \
 		  not event.is_pressed():
-			$"../ChattingPanel".visible = not $"../ChattingPanel".visible
+			$"../ChattyPanel".visible = not $"../ChattyPanel".visible
 
 	# 设置按钮颜色变化(不在块内)
 	var key_color:Color
@@ -59,6 +61,7 @@ func _on_player_action(event: InputEvent) -> void:
 	new_theme.border_color = key_color
 	self.add_theme_stylebox_override("panel",new_theme)
 
+# 根据自己的属性发出玩家移动事件
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if self.name == "MoveLeft" or self.name == "MoveRight":

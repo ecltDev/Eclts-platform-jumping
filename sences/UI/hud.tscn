@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://iycqjs01q5d3" path="res://logic/UI/player_control_key.gd" id="1_dludm"]
 [ext_resource type="FontFile" uid="uid://ur1lnw61iwon" path="res://resource/fonts/VonwaonBitmap-12px.ttf" id="2_f31u7"]
 [ext_resource type="Script" uid="uid://4okluhfg31h2" path="res://logic/debugging_text.gd" id="3_iam71"]
-[ext_resource type="Script" uid="uid://dqu3te4055563" path="res://logic/UI/chatting_panel.gd" id="4_5jfx1"]
+[ext_resource type="Script" uid="uid://dqu3te4055563" path="res://logic/UI/chatty_panel.gd" id="4_5jfx1"]
 [ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="4_yelkj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dludm"]
@@ -255,7 +255,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
 theme_override_font_sizes/font_size = 26
 text = "R"
 
-[node name="Debug" type="Panel" parent="." unique_id=2035169158]
+[node name="DisplayDebuggingOverlay" type="Panel" parent="." unique_id=2035169158]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -273,7 +273,7 @@ pivot_offset_ratio = Vector2(1, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8coll")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="Debug" unique_id=931594987]
+[node name="Label" type="Label" parent="DisplayDebuggingOverlay" unique_id=931594987]
 layout_mode = 0
 offset_left = 5.999996
 offset_top = 4.0
@@ -286,7 +286,7 @@ text = "调试屏幕"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChattingKey" type="Panel" parent="." unique_id=263626091]
+[node name="OpenChattyPanel" type="Panel" parent="." unique_id=263626091]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -304,7 +304,7 @@ pivot_offset_ratio = Vector2(1, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_bd3rk")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="ChattingKey" unique_id=144711018]
+[node name="Label" type="Label" parent="OpenChattyPanel" unique_id=144711018]
 layout_mode = 0
 offset_left = 5.999996
 offset_top = 4.0
@@ -317,7 +317,7 @@ text = "输入"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DisplayKey" type="Panel" parent="." unique_id=1666002531]
+[node name="DisplayKeys" type="Panel" parent="." unique_id=1666002531]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -332,7 +332,7 @@ pivot_offset_ratio = Vector2(0, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_5mgrr")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="DisplayKey" unique_id=1697102528]
+[node name="Label" type="Label" parent="DisplayKeys" unique_id=1697102528]
 layout_mode = 0
 offset_left = 5.999996
 offset_top = 4.0
@@ -345,7 +345,7 @@ text = "K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DebugOverlay" type="Control" parent="." unique_id=1713494682]
+[node name="DebuggingOverlay" type="Control" parent="." unique_id=1713494682]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -355,7 +355,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DetailLeft" type="Label" parent="DebugOverlay" unique_id=1320669623]
+[node name="DetailLeft" type="Label" parent="DebuggingOverlay" unique_id=1320669623]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 19.0
@@ -366,7 +366,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0f616")
 text = "Debug"
 script = ExtResource("3_iam71")
 
-[node name="DetailRight" type="Label" parent="DebugOverlay" unique_id=1218901984]
+[node name="DetailRight" type="Label" parent="DebuggingOverlay" unique_id=1218901984]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -382,7 +382,7 @@ text = "Debug"
 horizontal_alignment = 2
 script = ExtResource("3_iam71")
 
-[node name="ChattingPanel" type="Control" parent="." unique_id=281181083]
+[node name="ChattyPanel" type="Control" parent="." unique_id=281181083]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -392,7 +392,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="InputBox" type="HSplitContainer" parent="ChattingPanel" unique_id=538166294]
+[node name="InputBox" type="HSplitContainer" parent="ChattyPanel" unique_id=538166294]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -408,7 +408,7 @@ split_offsets = PackedInt32Array(54, 120, 170, 220, 308)
 collapsed = true
 split_offset = 54
 
-[node name="Fold" type="Button" parent="ChattingPanel/InputBox" unique_id=1771817241]
+[node name="Fold" type="Button" parent="ChattyPanel/InputBox" unique_id=1771817241]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -417,7 +417,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " 收起 "
 script = ExtResource("4_5jfx1")
 
-[node name="Clear" type="Button" parent="ChattingPanel/InputBox" unique_id=468080718]
+[node name="Clear" type="Button" parent="ChattyPanel/InputBox" unique_id=468080718]
 clip_contents = true
 layout_mode = 2
 theme = ExtResource("4_yelkj")
@@ -427,7 +427,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " 清空 "
 script = ExtResource("4_5jfx1")
 
-[node name="LastOne" type="Button" parent="ChattingPanel/InputBox" unique_id=667746785]
+[node name="LastOne" type="Button" parent="ChattyPanel/InputBox" unique_id=667746785]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -436,7 +436,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " ↑ "
 script = ExtResource("4_5jfx1")
 
-[node name="NextOne" type="Button" parent="ChattingPanel/InputBox" unique_id=1597875829]
+[node name="NextOne" type="Button" parent="ChattyPanel/InputBox" unique_id=1597875829]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -445,7 +445,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " ↓ "
 script = ExtResource("4_5jfx1")
 
-[node name="Send" type="Button" parent="ChattingPanel/InputBox" unique_id=249582759]
+[node name="Send" type="Button" parent="ChattyPanel/InputBox" unique_id=249582759]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -454,13 +454,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = "  发送  "
 script = ExtResource("4_5jfx1")
 
-[node name="InputBox" type="TextEdit" parent="ChattingPanel/InputBox" unique_id=832436990]
+[node name="InputBox" type="TextEdit" parent="ChattyPanel/InputBox" unique_id=832436990]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_font_sizes/font_size = 33
 placeholder_text = "输入聊天文本"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ChattingPanel" unique_id=574040161]
+[node name="ScrollContainer" type="ScrollContainer" parent="ChattyPanel" unique_id=574040161]
 layout_mode = 0
 offset_top = 320.0
 offset_right = 640.0
@@ -469,7 +469,7 @@ theme = ExtResource("4_yelkj")
 draw_focus_border = true
 tile_scroll_hint = true
 
-[node name="ChattingMessagesView" type="VBoxContainer" parent="ChattingPanel/ScrollContainer" unique_id=1138767049]
+[node name="ChattyMessagesView" type="VBoxContainer" parent="ChattyPanel/ScrollContainer" unique_id=1138767049]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -482,11 +482,11 @@ alignment = 2
 [connection signal="gui_input" from="PlayerControl/RightterControl/Jump" to="PlayerControl/RightterControl/Jump" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/RightterControl/Opeat" to="PlayerControl/RightterControl/Opeat" method="_on_player_action"]
 [connection signal="gui_input" from="PlayerControl/RightterControl/Respawn" to="PlayerControl/RightterControl/Respawn" method="_on_player_action"]
-[connection signal="gui_input" from="Debug" to="Debug" method="_on_player_action"]
-[connection signal="gui_input" from="ChattingKey" to="ChattingKey" method="_on_player_action"]
-[connection signal="gui_input" from="DisplayKey" to="DisplayKey" method="_on_player_action"]
-[connection signal="pressed" from="ChattingPanel/InputBox/Fold" to="ChattingPanel/InputBox/Fold" method="_on_action_take"]
-[connection signal="pressed" from="ChattingPanel/InputBox/Clear" to="ChattingPanel/InputBox/Clear" method="_on_action_take"]
-[connection signal="pressed" from="ChattingPanel/InputBox/LastOne" to="ChattingPanel/InputBox/LastOne" method="_on_action_take"]
-[connection signal="pressed" from="ChattingPanel/InputBox/NextOne" to="ChattingPanel/InputBox/NextOne" method="_on_action_take"]
-[connection signal="pressed" from="ChattingPanel/InputBox/Send" to="ChattingPanel/InputBox/Send" method="_on_action_take"]
+[connection signal="gui_input" from="DisplayDebuggingOverlay" to="DisplayDebuggingOverlay" method="_on_player_action"]
+[connection signal="gui_input" from="OpenChattyPanel" to="OpenChattyPanel" method="_on_player_action"]
+[connection signal="gui_input" from="DisplayKeys" to="DisplayKeys" method="_on_player_action"]
+[connection signal="pressed" from="ChattyPanel/InputBox/Fold" to="ChattyPanel/InputBox/Fold" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/InputBox/Clear" to="ChattyPanel/InputBox/Clear" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/InputBox/LastOne" to="ChattyPanel/InputBox/LastOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/InputBox/NextOne" to="ChattyPanel/InputBox/NextOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/InputBox/Send" to="ChattyPanel/InputBox/Send" method="_on_action_take"]
