@@ -391,6 +391,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_5jfx1")
 
 [node name="InputBox" type="HSplitContainer" parent="ChattyPanel" unique_id=538166294]
 layout_mode = 1
@@ -404,7 +405,7 @@ offset_right = -8.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
-split_offsets = PackedInt32Array(54, 120, 170, 220, 308)
+split_offsets = PackedInt32Array(54, 120, 170, 220, 1038)
 collapsed = true
 split_offset = 54
 
@@ -454,11 +455,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = "  发送  "
 script = ExtResource("4_5jfx1")
 
-[node name="InputBox" type="TextEdit" parent="ChattyPanel/InputBox" unique_id=832436990]
+[node name="InputBox" type="LineEdit" parent="ChattyPanel/InputBox" unique_id=510945833]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_font_sizes/font_size = 33
 placeholder_text = "输入聊天文本"
+clear_button_enabled = true
+draw_control_chars = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ChattyPanel" unique_id=574040161]
 layout_mode = 0
