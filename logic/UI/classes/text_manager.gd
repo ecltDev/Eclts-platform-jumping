@@ -1,10 +1,13 @@
 extends Node
 ## 文本管理器
 
+# 预加载资源
+var RisingText:Resource = preload("res://sences/tiny_sence/Objects/rising_text.tscn")
+var FloattingText:Resource = preload("res://sences/tiny_sence/Objects/floatting_text.tscn")
 # 显示上升文本
 func Display_up_rising_text(target_node:Node2D,text:String) -> void:
 	# 主要变量
-	var text_root:Node2D = EGG.RisingText.instantiate()
+	var text_root:Node2D = TextManager.RisingText.instantiate()
 	var main_text:RichTextLabel = text_root.get_child(0)
 	# 初始化变换
 	target_node.add_child(text_root)
@@ -31,7 +34,7 @@ func Display_up_rising_text(target_node:Node2D,text:String) -> void:
 # 显示浮动文本(会返回浮动文本根节点)
 func display_floatting_text(target_node:Node2D,text:String = "Eclt",increment_y:float = 20) -> Node2D:
 	# 主要变量
-	var text_root:Node2D = EGG.FloattingText.instantiate()
+	var text_root:Node2D = TextManager.FloattingText.instantiate()
 	var main_text:RichTextLabel = text_root.get_child(0)
 	# 添加FloattingText到TargetNode
 	target_node.add_child(text_root)

@@ -2,7 +2,7 @@ extends Components
 class_name TRIGGER_AREA
 
 var action_array:Array[Callable] # 动作组
-@export_multiline() var hint_text:String = "按下[color=yellow][]O][/color]键进行交互" # 提示文本
+@export_multiline() var hint_text:String = "按下[color=yellow][O][/color]键进行交互" # 提示文本
 @export var auto_size:bool = true # 自动设置大小为父节点
 @export var trigger_target_name:String = "Player" # 触发目标名字
 var trigger_target_name_string_packet:PackedStringArray

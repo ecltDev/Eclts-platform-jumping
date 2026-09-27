@@ -383,17 +383,19 @@ horizontal_alignment = 2
 script = ExtResource("3_iam71")
 
 [node name="ChattyPanel" type="Control" parent="." unique_id=281181083]
-visible = false
 layout_mode = 1
-anchors_preset = 15
+anchor_left = 0.021000002
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.96300006
+offset_left = -0.19200134
+offset_right = -24.0
+offset_bottom = -0.024047852
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_5jfx1")
 
-[node name="InputBox" type="HSplitContainer" parent="ChattyPanel" unique_id=538166294]
+[node name="OpreatPanel" type="HSplitContainer" parent="ChattyPanel" unique_id=538166294]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -409,7 +411,7 @@ split_offsets = PackedInt32Array(54, 120, 170, 220, 1038)
 collapsed = true
 split_offset = 54
 
-[node name="Fold" type="Button" parent="ChattyPanel/InputBox" unique_id=1771817241]
+[node name="Fold" type="Button" parent="ChattyPanel/OpreatPanel" unique_id=1771817241]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -418,7 +420,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " 收起 "
 script = ExtResource("4_5jfx1")
 
-[node name="Clear" type="Button" parent="ChattyPanel/InputBox" unique_id=468080718]
+[node name="Clear" type="Button" parent="ChattyPanel/OpreatPanel" unique_id=468080718]
 clip_contents = true
 layout_mode = 2
 theme = ExtResource("4_yelkj")
@@ -428,7 +430,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " 清空 "
 script = ExtResource("4_5jfx1")
 
-[node name="LastOne" type="Button" parent="ChattyPanel/InputBox" unique_id=667746785]
+[node name="LastOne" type="Button" parent="ChattyPanel/OpreatPanel" unique_id=667746785]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -437,7 +439,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " ↑ "
 script = ExtResource("4_5jfx1")
 
-[node name="NextOne" type="Button" parent="ChattyPanel/InputBox" unique_id=1597875829]
+[node name="NextOne" type="Button" parent="ChattyPanel/OpreatPanel" unique_id=1597875829]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -446,7 +448,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = " ↓ "
 script = ExtResource("4_5jfx1")
 
-[node name="Send" type="Button" parent="ChattyPanel/InputBox" unique_id=249582759]
+[node name="Send" type="Button" parent="ChattyPanel/OpreatPanel" unique_id=249582759]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -455,7 +457,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jfx1")
 text = "  发送  "
 script = ExtResource("4_5jfx1")
 
-[node name="InputBox" type="LineEdit" parent="ChattyPanel/InputBox" unique_id=510945833]
+[node name="InputBox" type="LineEdit" parent="ChattyPanel/OpreatPanel" unique_id=510945833]
 layout_mode = 2
 theme = ExtResource("4_yelkj")
 theme_override_font_sizes/font_size = 33
@@ -465,9 +467,10 @@ draw_control_chars = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ChattyPanel" unique_id=574040161]
 layout_mode = 0
-offset_top = 320.0
-offset_right = 640.0
-offset_bottom = 608.0
+offset_left = -1.0
+offset_top = 291.0
+offset_right = 639.0
+offset_bottom = 579.0
 theme = ExtResource("4_yelkj")
 draw_focus_border = true
 tile_scroll_hint = true
@@ -488,8 +491,8 @@ alignment = 2
 [connection signal="gui_input" from="DisplayDebuggingOverlay" to="DisplayDebuggingOverlay" method="_on_player_action"]
 [connection signal="gui_input" from="OpenChattyPanel" to="OpenChattyPanel" method="_on_player_action"]
 [connection signal="gui_input" from="DisplayKeys" to="DisplayKeys" method="_on_player_action"]
-[connection signal="pressed" from="ChattyPanel/InputBox/Fold" to="ChattyPanel/InputBox/Fold" method="_on_action_take"]
-[connection signal="pressed" from="ChattyPanel/InputBox/Clear" to="ChattyPanel/InputBox/Clear" method="_on_action_take"]
-[connection signal="pressed" from="ChattyPanel/InputBox/LastOne" to="ChattyPanel/InputBox/LastOne" method="_on_action_take"]
-[connection signal="pressed" from="ChattyPanel/InputBox/NextOne" to="ChattyPanel/InputBox/NextOne" method="_on_action_take"]
-[connection signal="pressed" from="ChattyPanel/InputBox/Send" to="ChattyPanel/InputBox/Send" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/OpreatPanel/Fold" to="ChattyPanel/OpreatPanel/Fold" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/OpreatPanel/Clear" to="ChattyPanel/OpreatPanel/Clear" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/OpreatPanel/LastOne" to="ChattyPanel/OpreatPanel/LastOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/OpreatPanel/NextOne" to="ChattyPanel/OpreatPanel/NextOne" method="_on_action_take"]
+[connection signal="pressed" from="ChattyPanel/OpreatPanel/Send" to="ChattyPanel/OpreatPanel/Send" method="_on_action_take"]

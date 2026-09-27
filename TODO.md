@@ -3,12 +3,12 @@
 ---
  #### 2026/9/25
  - [ ] +添加 **临时性质的** 死亡聊天框文本
- - [ ] +添加跳跃力度
+ - [x] +添加跳跃力度
  - [x] +新增 **TextManager** 类 和 **ChattingManager** 类
  - [x] @单分 文本两方法为一类 聊天信号为一类
  - [ ] +ChattingManager类新增发送消息方法
  #### 2026/9/27
- ##### 拼写错误
+ ##### 拼写错误(由AI检查)
  - [ ] 仓库名称：`Eclts_plantform_jumpping` → `Eclts_platform_jumping`
  - [ ] 目录：`sences/` → `scenes/`
  - [ ] 场景文件：`tiny_sence.tscn` → `tiny_scene.tscn`
