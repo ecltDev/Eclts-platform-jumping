@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export_range(0,500,10,"Speed") var SPEED:float = 260
-@export_range(0,500,10,"Velocity")  var JUMP_VELOCITY:float = -380
+@export_range(0,500,10,"Velocity")  var JUMP_VELOCITY:float = -520
 var rest_jumping_times:int = 2
 @onready var respawn_position = self.position
 var last_overlapping_unit:Area2D
@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	  self.rest_jumping_times > 0):
 		velocity.y = JUMP_VELOCITY
 		self.rest_jumping_times -= 1
+	elif Input.is_action_just_released("player_jump")and velocity.y<0:
+		velocity.y*=0.6
 	move_and_slide()
 	
 	# 垂直跳跃次数
