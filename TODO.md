@@ -29,7 +29,7 @@
  - [x] 项目配置名称：`2DCaractorTest` → `ACATSPlatFromJumping`
  ##### 规范错误
  - [x] 函数 `Display_up_rising_text()` → `display_up_rising_text()`
- - [-] ~~场景节点 `SAVE` → `SaveComponent`~~
+ - [ ] ~~场景节点 `SAVE` → `SaveComponent`~~
  - [x] 节点 `RichTextLabel` 重命名为 `TextItem`
  - [x] 删除 project.godot 残留配置 `[global] aaa.custom=false`
  - [x] 清理重复场景文件 `trigger_area.tscn`（废弃版本）
