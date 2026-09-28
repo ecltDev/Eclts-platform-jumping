@@ -9,7 +9,7 @@
  - [ ] +ChattingManager类新增发送消息方法
  #### 2026/9/27
  ##### 拼写错误(由AI检查)
- - [ ] 仓库名称：`Eclts_plantform_jumpping` → `Eclts_platform_jumping`
+ - [x] 仓库名称：`Eclts_plantform_jumpping` → `Eclts_platform_jumping`
  - [ ] 目录：`sences/` → `scenes/`
  - [ ] 场景文件：`tiny_sence.tscn` → `tiny_scene.tscn`
  - [ ] 场景文件：`main_sence.tscn` → `main_scene.tscn`
