@@ -33,4 +33,4 @@
  - [x] 节点 `RichTextLabel` 重命名为 `TextItem`
  - [x] 删除 project.godot 残留配置 `[global] aaa.custom=false`
  - [x] 清理重复场景文件 `trigger_area.tscn`（废弃版本）
- - [ ] 重命名场景内默认节点 `StaticBody2D` / `CollisionPolygon2D` 为业务名称如 `WallBody` / `WallShape`
+ - [x] 重命名场景内默认节点 `StaticBody2D` / `CollisionPolygon2D` 为业务名称如 `WallBody` / `WallShape`
