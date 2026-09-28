@@ -6,7 +6,7 @@ extends Node
 signal OnMessageSend(message:String)
 #Fields
 # 单个聊天文本
-var TextItem:Resource = preload("res://sences/UI/text_item.tscn")
+var TextItem:Resource = preload("res://scenes/UI/text_item.tscn")
 # 消息历史
 var MessageHistory:PackedStringArray = []
 # 最大历史消息项目

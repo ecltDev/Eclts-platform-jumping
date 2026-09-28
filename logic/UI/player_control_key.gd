@@ -1,7 +1,8 @@
 extends Panel
 ## 玩家控制相关
 
-var mepressed:bool = false
+# 它代表自己是否已按下
+var is_pressed:bool = false
 
 # 初始动作
 func _ready() -> void:
@@ -17,16 +18,16 @@ func _on_player_action(event: InputEvent) -> void:
 		# 左右移动
 		if (self.name == "MoveLeft" or
 		  self.name == "MoveRight" ):
-			EGG.ISVertrulKeyMovementPressed = event.is_pressed()
-			self.mepressed = event.is_pressed()
+			EGG.ISVirtualKeyMovementPressed = event.is_pressed()
+			self.is_pressed = event.is_pressed()
 
 		else:if self.name == "Jump":
 			if event.is_pressed():Input.action_press("player_jump")
 			else:Input.action_release("player_jump")
 
 		# 交互和重生
-		else:if self.name == "Opeat" and event.is_pressed():
-			EGG.MainPlayer.opeat()
+		else:if self.name == "Operate" and event.is_pressed():
+			EGG.MainPlayer.operate()
 		else:if self.name == "Respawn" and event.is_pressed():
 			EGG.MainPlayer.respawn()
 
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	if self.name == "MoveLeft" or self.name == "MoveRight":
 		var action:String = ("move_player_left" 
 		  if self.name == "MoveLeft" else "move_player_right")
-		if self.mepressed == true:
+		if self.is_pressed == true:
 			Input.action_press(action)
 		else:
 			Input.action_release(action)

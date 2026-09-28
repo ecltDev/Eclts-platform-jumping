@@ -3,4 +3,4 @@ extends Node
 # Fields
 var MainPlayer:CharacterBody2D = null
 var PlayerUserName:String = "Player"
-var ISVertrulKeyMovementPressed:bool = false
+var ISVirtualKeyMovementPressed:bool = false

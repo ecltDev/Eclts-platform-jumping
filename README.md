@@ -19,7 +19,7 @@ Godot Game Dev repository Use in Git
 |#序号|输入按键|命名全称|动作|
 |:---|:------|:------|:--|
 |1|J/Space|Jump|向上跳跃|
-|2|O|Operat|在交互区域内交互|
+|2|O|Operate|在交互区域内交互|
 |3|R|Respawn|移动玩家到重生点|
 |4|A/Left|MovePlayerLeft|向左移动玩家|
 |5|D/Right|MovePlayerRight|向右移动玩家|

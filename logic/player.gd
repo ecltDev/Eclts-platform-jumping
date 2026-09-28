@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	# 按键控制移动
-	if not EGG.ISVertrulKeyMovementPressed:
+	if not EGG.ISVirtualKeyMovementPressed:
 		if Input.is_physical_key_pressed(KEY_A):Input.action_press("move_player_left")
 		else:Input.action_release("move_player_left")
 		if Input.is_physical_key_pressed(KEY_D):Input.action_press("move_player_right")
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		self.rest_jumping_times = 2
 
 	# 交互和重生
-	if Input.is_action_just_pressed("player_opeat"):EGG.MainPlayer.opeat()
+	if Input.is_action_just_pressed("player_operate"):EGG.MainPlayer.operate()
 	if Input.is_action_just_pressed("player_respawn"):EGG.MainPlayer.respawn()
 
 # 设置交互区域
@@ -56,7 +56,7 @@ func _on_interact_detect_area_exited(area: Area2D) -> void:
 		self.last_overlapping_unit = null
 
 # 死亡和操作(交互)
-func opeat() -> void:
+func operate() -> void:
 	if EGG.MainPlayer.last_overlapping_unit != null:
 		if EGG.MainPlayer.last_overlapping_unit.has_method(
 		  "player_interact"):

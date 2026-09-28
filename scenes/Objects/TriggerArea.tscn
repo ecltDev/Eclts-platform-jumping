@@ -8,5 +8,5 @@ size = Vector2(16, 16)
 [node name="TriggerArea" type="Area2D" unique_id=243988703]
 script = ExtResource("1_l0hny")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=1225434043]
+[node name="DetectCollision" type="CollisionShape2D" parent="." unique_id=1225434043]
 shape = SubResource("RectangleShape2D_aweni")

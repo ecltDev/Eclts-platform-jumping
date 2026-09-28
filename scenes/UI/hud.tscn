@@ -136,7 +136,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LeftterControl" type="Control" parent="PlayerControl" unique_id=2140747445]
+[node name="LefterControl" type="Control" parent="PlayerControl" unique_id=2140747445]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -148,7 +148,7 @@ offset_bottom = -200.0
 grow_vertical = 0
 scale = Vector2(4, 4)
 
-[node name="MoveLeft" type="Panel" parent="PlayerControl/LeftterControl" unique_id=775911652]
+[node name="MoveLeft" type="Panel" parent="PlayerControl/LefterControl" unique_id=775911652]
 layout_mode = 0
 offset_top = -2.4414061e-05
 offset_right = 40.000004
@@ -156,7 +156,7 @@ offset_bottom = 39.999977
 theme_override_styles/panel = SubResource("StyleBoxFlat_dludm")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="PlayerControl/LeftterControl/MoveLeft" unique_id=909895403]
+[node name="Label" type="Label" parent="PlayerControl/LefterControl/MoveLeft" unique_id=909895403]
 layout_mode = 0
 offset_left = 3.9999962
 offset_top = -7.9999847
@@ -166,7 +166,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
 theme_override_font_sizes/font_size = 30
 text = "←"
 
-[node name="MoveRight" type="Panel" parent="PlayerControl/LeftterControl" unique_id=765445961]
+[node name="MoveRight" type="Panel" parent="PlayerControl/LefterControl" unique_id=765445961]
 layout_mode = 0
 offset_left = 44.0
 offset_right = 84.0
@@ -174,7 +174,7 @@ offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f31u7")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="PlayerControl/LeftterControl/MoveRight" unique_id=1407497655]
+[node name="Label" type="Label" parent="PlayerControl/LefterControl/MoveRight" unique_id=1407497655]
 layout_mode = 0
 offset_left = 4.799999
 offset_top = -7.9999847
@@ -184,7 +184,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
 theme_override_font_sizes/font_size = 30
 text = "→"
 
-[node name="RightterControl" type="Control" parent="PlayerControl" unique_id=1337850709]
+[node name="RighterControl" type="Control" parent="PlayerControl" unique_id=1337850709]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -199,14 +199,14 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(4, 4)
 
-[node name="Jump" type="Panel" parent="PlayerControl/RightterControl" unique_id=1051849440]
+[node name="Jump" type="Panel" parent="PlayerControl/RighterControl" unique_id=1051849440]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iam71")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="PlayerControl/RightterControl/Jump" unique_id=265598008]
+[node name="Label" type="Label" parent="PlayerControl/RighterControl/Jump" unique_id=265598008]
 layout_mode = 0
 offset_left = 17.999996
 offset_top = -2.0
@@ -216,7 +216,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
 theme_override_font_sizes/font_size = 26
 text = "J"
 
-[node name="Opeat" type="Panel" parent="PlayerControl/RightterControl" unique_id=101215125]
+[node name="Operate" type="Panel" parent="PlayerControl/RighterControl" unique_id=101215125]
 layout_mode = 0
 offset_left = 10.0
 offset_top = -22.0
@@ -226,7 +226,7 @@ scale = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_45j5j")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="PlayerControl/RightterControl/Opeat" unique_id=1209833156]
+[node name="Label" type="Label" parent="PlayerControl/RighterControl/Operate" unique_id=1209833156]
 layout_mode = 0
 offset_left = 9.999996
 offset_top = 2.0
@@ -236,7 +236,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.27450982)
 theme_override_font_sizes/font_size = 26
 text = "O"
 
-[node name="Respawn" type="Panel" parent="PlayerControl/RightterControl" unique_id=1371263985]
+[node name="Respawn" type="Panel" parent="PlayerControl/RighterControl" unique_id=1371263985]
 layout_mode = 0
 offset_left = -12.0
 offset_top = -16.0
@@ -246,7 +246,7 @@ scale = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_l8h8d")
 script = ExtResource("1_dludm")
 
-[node name="Label" type="Label" parent="PlayerControl/RightterControl/Respawn" unique_id=671492123]
+[node name="Label" type="Label" parent="PlayerControl/RighterControl/Respawn" unique_id=671492123]
 layout_mode = 0
 offset_left = 11.999996
 offset_right = 51.999996
@@ -383,6 +383,7 @@ horizontal_alignment = 2
 script = ExtResource("3_iam71")
 
 [node name="ChattyPanel" type="Control" parent="." unique_id=281181083]
+visible = false
 layout_mode = 1
 anchor_left = 0.021000002
 anchor_right = 1.0
@@ -483,11 +484,11 @@ size_flags_vertical = 3
 theme_override_constants/separation = 5
 alignment = 2
 
-[connection signal="gui_input" from="PlayerControl/LeftterControl/MoveLeft" to="PlayerControl/LeftterControl/MoveLeft" method="_on_player_action"]
-[connection signal="gui_input" from="PlayerControl/LeftterControl/MoveRight" to="PlayerControl/LeftterControl/MoveRight" method="_on_player_action"]
-[connection signal="gui_input" from="PlayerControl/RightterControl/Jump" to="PlayerControl/RightterControl/Jump" method="_on_player_action"]
-[connection signal="gui_input" from="PlayerControl/RightterControl/Opeat" to="PlayerControl/RightterControl/Opeat" method="_on_player_action"]
-[connection signal="gui_input" from="PlayerControl/RightterControl/Respawn" to="PlayerControl/RightterControl/Respawn" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/LefterControl/MoveLeft" to="PlayerControl/LefterControl/MoveLeft" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/LefterControl/MoveRight" to="PlayerControl/LefterControl/MoveRight" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RighterControl/Jump" to="PlayerControl/RighterControl/Jump" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RighterControl/Operate" to="PlayerControl/RighterControl/Operate" method="_on_player_action"]
+[connection signal="gui_input" from="PlayerControl/RighterControl/Respawn" to="PlayerControl/RighterControl/Respawn" method="_on_player_action"]
 [connection signal="gui_input" from="DisplayDebuggingOverlay" to="DisplayDebuggingOverlay" method="_on_player_action"]
 [connection signal="gui_input" from="OpenChattyPanel" to="OpenChattyPanel" method="_on_player_action"]
 [connection signal="gui_input" from="DisplayKeys" to="DisplayKeys" method="_on_player_action"]

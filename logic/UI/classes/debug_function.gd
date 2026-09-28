@@ -24,9 +24,9 @@ var DebugInfo:Dictionary[String,Variant] = {
 # 获取静态调试消息文本(首选显示在右侧)
 func get_formatted_static_info() -> String:
 	return '''{GameName} {VersionType} {GameVersionName}({RenderingDriverName})
-	OS:{OSName} Imitate:{IsEmulator}
+	OS:{OSName} ISEmulator:{IsEmulator}
 	Godot:{EngineVersionName}
-	CPU:{ProcessorName}(arrch:{ArchitectureName})
+	CPU:{ProcessorName}(arch:{ArchitectureName})
 	GPU:{VideoAdapterName}'''.format(DebugFunction.DebugInfo)
 # 获取动态调试消息文本(首选显示在左侧)
 func get_formatted_dynamic_info() -> String:

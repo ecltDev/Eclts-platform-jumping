@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4filvd2ofkln"]
 
-[ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="1_6qxj2"]
+[ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="1_10c1p"]
 
-[node name="FloattingText" type="Node2D" unique_id=51502838]
+[node name="FloatingText" type="Node2D" unique_id=51502838]
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=771585661]
 anchors_preset = 7
@@ -16,7 +16,7 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("1_6qxj2")
+theme = ExtResource("1_10c1p")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

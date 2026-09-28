@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cer0nqrxeefsq"]
 
 [ext_resource type="Script" uid="uid://ccsj4usjqnnay" path="res://logic/player.gd" id="1_fgka1"]
-[ext_resource type="PackedScene" uid="uid://8ua0t006dkfm" path="res://sences/UI/hud.tscn" id="2_ch301"]
+[ext_resource type="PackedScene" uid="uid://8ua0t006dkfm" path="res://scenes/UI/hud.tscn" id="2_ch301"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_s5mkr"]
 

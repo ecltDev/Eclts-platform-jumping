@@ -2,10 +2,10 @@ extends Node
 ## 文本管理器
 
 # 预加载资源
-var RisingText:Resource = preload("res://sences/tiny_sence/Objects/rising_text.tscn")
-var FloattingText:Resource = preload("res://sences/tiny_sence/Objects/floatting_text.tscn")
+var RisingText:Resource = preload("res://scenes/tiny_scenes/Objects/rising_text.tscn")
+var floatingText:Resource = preload("res://scenes/tiny_scenes/Objects/floating_text.tscn")
 # 显示上升文本
-func Display_up_rising_text(target_node:Node2D,text:String) -> void:
+func display_up_rising_text(target_node:Node2D,text:String) -> void:
 	# 主要变量
 	var text_root:Node2D = TextManager.RisingText.instantiate()
 	var main_text:RichTextLabel = text_root.get_child(0)
@@ -26,17 +26,17 @@ func Display_up_rising_text(target_node:Node2D,text:String) -> void:
 	  text_root.position.y - 50))
 	text_animation_player.current_animation = "disappear"
 	# 删除节点计时器
-	var text_destory_timer:Timer = main_text.get_child(1)
-	text_destory_timer.start(0.4)
-	await text_destory_timer.timeout
+	var text_destroy_timer:Timer = main_text.get_child(1)
+	text_destroy_timer.start(0.4)
+	await text_destroy_timer.timeout
 	text_root.queue_free()
 
 # 显示浮动文本(会返回浮动文本根节点)
-func display_floatting_text(target_node:Node2D,text:String = "Eclt",increment_y:float = 20) -> Node2D:
+func display_floating_text(target_node:Node2D,text:String = "Eclt",increment_y:float = 20) -> Node2D:
 	# 主要变量
-	var text_root:Node2D = TextManager.FloattingText.instantiate()
+	var text_root:Node2D = TextManager.floatingText.instantiate()
 	var main_text:RichTextLabel = text_root.get_child(0)
-	# 添加FloattingText到TargetNode
+	# 添加floatingText到TargetNode
 	target_node.add_child(text_root)
 	# 设置属性并等待一帧
 	text_root.position = Vector2(0,0)

@@ -7,6 +7,6 @@ func _ready() -> void: # 添加动作到触发区域动作组
 		func(unit:Variant):
 			# unit 是存档的根节点
 			EGG.MainPlayer.respawn_position = unit.position
-			TextManager.Display_up_rising_text(unit,"[color=yellow]已设置重生点![/color]")
+			TextManager.display_up_rising_text(unit,"[color=yellow]已设置重生点![/color]")
 			unit.get_child(0).modulate = Color(0.0, 1.0, 0.0, 1.0)
 	)
