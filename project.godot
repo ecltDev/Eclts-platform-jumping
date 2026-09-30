@@ -42,8 +42,6 @@ folder_colors={
 "res://sprites/": "blue"
 }
 
-[global]
-
 [input]
 
 player_jump={

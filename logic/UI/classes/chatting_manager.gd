@@ -52,5 +52,6 @@ func message_toggle(toggle_type:int) -> String:
 			1 if toggle_type == ChattingManager.MessageToggleType.LASTONE else -1)
 		if new_index >= 0 and new_index < ChattingManager.MessageHistory.size():
 			ChattingManager.CurrentTextIndex = new_index
-		return ChattingManager.MessageHistory[ChattingManager.CurrentTextIndex]
+			return ChattingManager.MessageHistory[ChattingManager.CurrentTextIndex]
+		else:return ""
 	else:return ""

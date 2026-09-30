@@ -25,7 +25,13 @@ func _on_action_take() -> void:
 	
 	# 切换历史文本(获取文本)
 	elif (self.name == "LastOne" or self.name == "NextOne"):
+		# 新建表达式 & 编码 
+		# NOTE:expression表达式在真空中运行 不认识全局单例
 		var expe:Expression = Expression.new()
-		var me:Variant = self
-		expe.parse("ChattingManager." + me.name.to_upper())
-		ChattingManager.message_toggle(expe.execute())
+		expe.parse("ChattingManager.MessageToggleType." + 
+			self.name.to_upper(),["ChattingManager"])
+		# 执行 & 获取
+		var text:String = ChattingManager.message_toggle(
+			expe.execute([ChattingManager]))
+		if text != "":
+			$"../InputBox".text = text
