@@ -1385,6 +1385,7 @@ Tree/fonts/title_button_font = SubResource("FontFile_8ptm1")
 
 [node name="TextItem" type="RichTextLabel" unique_id=1413733623]
 size_flags_vertical = 8
+mouse_filter = 1
 theme = ExtResource("1_s5bp7")
 bbcode_enabled = true
 fit_content = true
@@ -1397,5 +1398,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = SubResource("Theme_j61ad")
 color = Color(0, 0, 0, 0.3529412)

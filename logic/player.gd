@@ -1,10 +1,19 @@
 extends CharacterBody2D
 
+# 速度 Note:Velocity特指向指定方向移动(有速度有方向的量:矢量) Speed指任意方向的速度
 @export_range(0,500,10,"Speed") var SPEED:float = 260
-@export_range(0,500,10,"Velocity")  var JUMP_VELOCITY:float = -520
+# 跳跃速度下降因子
+@export_range(0,1,0.01,"VSReduceFactor")
+var JUMPING_VELOCITY_REDUCE_FACTOR:float = 0.45
+# 跳跃速度
+@export_range(0,500,10,"Velocity") var JUMP_VELOCITY:float = -520
+# 剩余跳跃次数
 var rest_jumping_times:int = 2
+# 重生坐标
 @onready var respawn_position = self.position
+# 最后重叠的触发区域
 var last_overlapping_unit:Area2D
+# 是死亡的
 var is_dead:bool = false
 
 func _ready() -> void:
@@ -34,8 +43,9 @@ func _physics_process(delta: float) -> void:
 	  self.rest_jumping_times > 0):
 		velocity.y = JUMP_VELOCITY
 		self.rest_jumping_times -= 1
-	elif Input.is_action_just_released("player_jump")and velocity.y<0:
-		velocity.y*=0.6
+	
+	elif Input.is_action_just_released("player_jump") and self.velocity.y<0:
+		self.velocity.y *= self.JUMPING_VELOCITY_REDUCE_FACTOR
 	move_and_slide()
 	
 	# 垂直跳跃次数

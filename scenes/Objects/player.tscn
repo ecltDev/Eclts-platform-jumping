@@ -16,8 +16,8 @@ gradient = SubResource("Gradient_fgka1")
 scale = Vector2(1.999482, 2.272121)
 script = ExtResource("1_fgka1")
 
-[node name="PlayerSpriteDemo" type="MeshInstance2D" parent="." unique_id=1080798281]
-scale = Vector2(13.616, 29.76)
+[node name="PlayerSpriteDemo" type="MeshInstance2D" parent="." unique_id=631007288]
+scale = Vector2(13.615999, 29.759996)
 mesh = SubResource("QuadMesh_s5mkr")
 texture = SubResource("GradientTexture1D_ch301")
 
