@@ -36,3 +36,4 @@
  - [x] @重命名场景内默认节点 `StaticBody2D` / `CollisionPolygon2D` 为业务名称如 `WallBody` / `WallShape`
 #### 2026/9/30
  - [ ] +为玩家添加精灵和动画
+ - [ ] +窗口UI
