@@ -1,13 +1,8 @@
 extends Control
 
-# 调试
-const DEBUG_MOBILE_DRAG:bool = false
 # 平台兼容
 # 电脑
-var is_mouse_pressed:bool = false
-# 手机
-var is_drag_on_screen:bool = false
-var last_drag_position:Vector2 = Vector2()
+var is_drag_bar_pressed:bool = false
 # 状态标记
 var is_maximized:bool = false
 var is_folded:bool = false
@@ -15,7 +10,7 @@ var is_folded_fullscreen:bool = false
 # 配置常量
 var FOLD_SIZE_Y:float = 30
 var          MIN_SIZE_Y:float = 30
-@onready var MIN_SIZE_X:float = 30 * $TitleBackground/OpeatPanel.get_child_count() + 30
+@onready var MIN_SIZE_X:float
 @onready var MAX_SIZE_Y:float = self.get_parent().size.y
 @onready var MAX_SIZE_X:float = self.get_parent().size.x
 @onready var size_y_no_folding:float = self.size.y
@@ -32,67 +27,51 @@ enum ColorChangeType{
 
 # 当已初始化
 func _ready() -> void:
-	# 初始化操作面板
-	await get_tree().process_frame
+	# 初始化操作面板(修改x位置和大小)
+	await get_tree().process_frame # 等待一帧
 	$TitleBackground/OpeatPanel.offset_left = \
 	  -30 * $TitleBackground/OpeatPanel.get_child_count()
 	$TitleBackground/OpeatPanel.size.x = \
 	  $TitleBackground/OpeatPanel.offset_left * -1
+	self.MIN_SIZE_X = 30 * $TitleBackground/OpeatPanel.get_child_count() + 30
 
 # 当拖拽调整大小按钮
 func _on_drag(event: InputEvent,source :Control) -> void:
-	# 接受事件 阻止输入事件继续传播
+	# 接收事件 阻止输入事件继续传播
 	self.accept_event()
 	if source.name == "TitleBackground" and \
-	  event is InputEventMouseButton or \
-	  event is InputEventScreenTouch:
+	  (event is InputEventMouseButton or \
+	  event is InputEventScreenTouch):
 		# 移动窗口到顶层
 		var parent:Variant = self.get_parent().get_parent()
 		parent.move_child(self.get_parent(),
 		  parent.get_child_count() - 1)
 	# 全屏判断
 	if not self.is_maximized:
-		# 手机端输入处理
-		if event is InputEventScreenDrag:
+		# Motion 和 Button 事件不同时存在
+		# 使用 Button/Screen 实例记录状态 再使用 Mootion/Drag 计算拖动
+		if event is InputEventScreenTouch or \
+		  event is InputEventMouseButton:
+			self.is_drag_bar_pressed = event.is_pressed()
+		# 计算拖拽
+		elif (event is InputEventScreenDrag or
+		  event is InputEventMouseButton) and \
+		  self.is_drag_bar_pressed:
 			self.plsyer_change_window_transform(event,source)
-		# 电脑端输入处理
-		else: # Motion 和 Button 事件不同时存在
-			# 使用Button实例记录状态 再使用 Mootion 计算拖动
-			if event is InputEventMouseButton:
-				self.is_mouse_pressed = event.is_pressed()
-			# 计算拖拽
-			elif event is InputEventMouseMotion and \
-			  self.is_mouse_pressed:
-				self.plsyer_change_window_transform(event,source)
 	elif source.name == "AdjustSize" and \
-	  event is InputEventMouseButton or \
-	  event is InputEventScreenTouch:
+	  (event is InputEventMouseButton or \
+	  event is InputEventScreenTouch):
 		self.fullscreen_size_as_window_size()
-
-# 当取消触摸
-func _on_touch_escape() -> void:
-	self.is_drag_on_screen = false
 
 # 玩家改变窗口变换(大小和位置)
 # NOTE:使用事件实例确定变换类型 使用事件UI名字判断变换类型
 func plsyer_change_window_transform(event:InputEvent,source:Control):
 	# 确保没有全屏 compatible ternary mutually
 	if not self.is_maximized:
-		var pointer_offset:Vector2 = Vector2()
-		# 计算拖拽偏移(区分平台)
-		if self.DEBUG_MOBILE_DRAG:# or event is InputEventScreenDrag:
-			if not self.is_drag_on_screen:
-				self.last_drag_position = event.position
-				self.is_drag_on_screen = true
-			pointer_offset = event.position - \
-			  self.last_drag_position
-		elif event is InputEventMouseMotion or \
-		  not self.DEBUG_MOBILE_DRAG:
-			pointer_offset = event.relative
 		# 标题拖拽
 		if source.name == "TitleBackground":
 			# 改变坐标
-			var used_position:Vector2 = self.position + pointer_offset
+			var used_position:Vector2 = self.position + event.relative
 			self.position = Vector2(
 				min( # x边界检测
 					max(used_position.x,0), # 左边界
@@ -108,7 +87,7 @@ func plsyer_change_window_transform(event:InputEvent,source:Control):
 			self.window_position_restore = self.position
 		# 调整尺寸
 		elif source.name == "AdjustSize":
-			var used_size:Vector2 = self.size + pointer_offset
+			var used_size:Vector2 = self.size + event.relative
 			self.size = Vector2( # 最小大小x
 				min(
 					max(
@@ -131,18 +110,20 @@ func plsyer_change_window_transform(event:InputEvent,source:Control):
 			self.window_size_restore = self.size
 			if not self.is_folded:
 				self.size_y_no_folding = self.size.y
-		if event is InputEventScreenDrag:
-			self.last_drag_position = event.position
 
 # 当关闭窗口
 func _on_close(event: InputEvent) -> void:
-	if event is InputEventScreenTouch or \
-	  event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		self.get_parent().queue_free()
 
 # 当(进入/退出)按钮
+func _on_touch_entered_or_exited(event: InputEvent, source: ColorRect) -> void:
+	if event is InputEventScreenTouch:
+		if event.is_pressed():self._on_mouse_entered(source)
+		else:self._on_mouse_exited(source)
 func _on_mouse_entered(source: ColorRect) -> void:
 	self.accept_event()
 	self.change_button_color(self.ColorChangeType.ENTER,source)
@@ -165,8 +146,8 @@ func change_button_color(change_type:int,target:ColorRect):
  
 # 当最(大/小)化
 func _on_maximize(event: InputEvent,source: Control) -> void:
-	if event is InputEventScreenTouch or \
-	  event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		# 进入全屏状态
@@ -252,8 +233,9 @@ func fullscreen_size_as_window_size() -> void:
 
 # 当折叠窗口
 func _on_fold_window(event: InputEvent, source: Control) -> void:
-	if event is InputEventScreenTouch or \
-	  event is InputEventMouseButton and \
+	# 啊啊啊 劳资把 and 和 or的优先级记反了 导致查了好久的BUG WTM***
+	if (event is InputEventScreenTouch or
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		# 处理还原折叠
@@ -285,8 +267,8 @@ func _on_fold_window(event: InputEvent, source: Control) -> void:
 # 当钉住窗口
 func _on_pin_window(event: InputEvent, source: Control) -> void:
 	self.accept_event()
-	if event is InputEventScreenTouch or \
-	  event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  event.is_pressed():
 		self.get_parent().top_level = not self.get_parent().top_level
 		source.get_child(0).text = "⎗" if \
