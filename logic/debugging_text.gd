@@ -4,9 +4,9 @@ extends Label
 func _process(delta: float) -> void:
 	DebugFunction.DebugInfo.FrameRenderingTime = delta
 	DebugFunction.DebugInfo.CurrentFPS = Engine.get_frames_per_second()
-	DebugFunction.DebugInfo.RespawnPosition = EGG.MainPlayer.respawn_position
-	DebugFunction.DebugInfo.PlayerVelocity = EGG.MainPlayer.velocity
 	if EGG.MainPlayer != null:
+		DebugFunction.DebugInfo.RespawnPosition = EGG.MainPlayer.respawn_position
+		DebugFunction.DebugInfo.PlayerVelocity = EGG.MainPlayer.velocity
 		DebugFunction.DebugInfo.PlayerPosition = EGG.MainPlayer.position
 	else:DebugFunction.DebugInfo.PlayerPosition = Vector2()
 	if (self.name =="DetailLeft") == true:

@@ -29,8 +29,10 @@ gdscript/warnings/directory_rules={}
 
 [display]
 
+window/size/sharp_corners=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=4
 
 [file_customization]
 

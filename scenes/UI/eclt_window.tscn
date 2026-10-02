@@ -11,9 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="WindowBackground" type="ColorRect" parent="." unique_id=2061076602]
-clip_contents = true
 layout_mode = 1
 offset_right = 704.0
 offset_bottom = 384.0
@@ -57,12 +57,33 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -90.0
+offset_left = -120.0
 offset_bottom = 30.0
-grow_horizontal = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 3
+columns = 10
+
+[node name="Pin" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=1274676231]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+
+[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OpeatPanel/Pin" unique_id=406885672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 22
+text = "⎘"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 
 [node name="Fold" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=1944285153]
 custom_minimum_size = Vector2(30, 30)
@@ -78,6 +99,7 @@ offset_top = -5.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 22
 text = "▲"
 horizontal_alignment = 1
@@ -130,6 +152,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="WindowContent" type="Control" parent="WindowBackground" unique_id=100680017]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,9 +194,13 @@ vertical_alignment = 1
 clip_text = true
 
 [connection signal="gui_input" from="WindowBackground/TitleBackground" to="WindowBackground" method="_on_drag" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_pin_window" flags=18]
+[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_fold_window" flags=18]
 [connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_maximize"]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_maximize" flags=18]
 [connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_mouse_exited" flags=18]
 [connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Close" to="WindowBackground" method="_on_close"]
