@@ -32,9 +32,9 @@ func _on_player_action(event: InputEvent) -> void:
 			EGG.MainPlayer.respawn()
 
 	# 左键单点部分 不检测左键按下触屏 检测鼠标按钮事件
-	if (event is InputEventScreenTouch and 
+	if (event is InputEventMouseButton and 
 	  Input.is_key_pressed(KEY_LEFT)) or \
-	  event is InputEventMouseButton:
+	  event is InputEventScreenTouch:
 
 		# 调试屏幕
 		if self.name == "DisplayDebuggingOverlay" and \
