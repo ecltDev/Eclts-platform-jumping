@@ -55,7 +55,7 @@ func _on_drag(event: InputEvent,source :Control) -> void:
 			self.is_drag_bar_pressed = event.is_pressed()
 		# 计算拖拽
 		elif (event is InputEventScreenDrag or
-		  event is InputEventMouseButton) and \
+		  event is InputEventMouseMotion) and \
 		  self.is_drag_bar_pressed:
 			self.plsyer_change_window_transform(event,source)
 	elif source.name == "AdjustSize" and \

@@ -32,23 +32,20 @@ func _on_player_action(event: InputEvent) -> void:
 			EGG.MainPlayer.respawn()
 
 	# 左键单点部分 不检测左键按下触屏 检测鼠标按钮事件
-	if (event is InputEventMouseButton and 
-	  Input.is_key_pressed(KEY_LEFT)) or \
-	  event is InputEventScreenTouch:
+	if (event is InputEventScreenTouch or
+	  event is InputEventMouseButton) and \
+	  not event.is_pressed():
 
 		# 调试屏幕
-		if self.name == "DisplayDebuggingOverlay" and \
-		   event.is_pressed():
+		if self.name == "DisplayDebuggingOverlay":
 			$"../DebuggingOverlay".visible = not $"../DebuggingOverlay".visible
 
 		# 显示按键
-		else:if self.name == "DisplayKeys" and \
-		  not event.is_pressed():
+		else:if self.name == "DisplayKeys":
 			$"../PlayerControl".visible = not $"../PlayerControl".visible
 
 		# 显示聊天
-		else:if self.name == "OpenChattyPanel" and \
-		  not event.is_pressed():
+		else:if self.name == "OpenChattyPanel":
 			$"../ChattyPanel".visible = not $"../ChattyPanel".visible
 
 	# 设置按钮颜色变化(不在块内)
