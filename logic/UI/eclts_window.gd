@@ -1,9 +1,14 @@
 extends Control
 
+#NOTE:手机端点击事件传入时序：
+#InputEventScreenTouch(pressed:true) -> InputEventScreenMouseButton(pressed:true)
+# -> InputEventScreenTouch(pressed:false) -> InputEventScreenMouseButton(pressed:false)
+
 # 平台兼容
-# 电脑
-var is_drag_bar_pressed:bool = false
+# 手机端防止重复点击
+var is_screen_touched:bool = false
 # 状态标记
+var is_drag_bar_pressed:bool = false
 var is_maximized:bool = false
 var is_folded:bool = false
 var is_folded_fullscreen:bool = false
@@ -18,8 +23,8 @@ var          MIN_SIZE_Y:float = 30
 @onready var window_position_restore:Vector2 = self.position
 # 文本标签
 @onready var adjust_size_button_label :Label = $AdjustSize/Label
-@onready var maximize_button_label:Label = $TitleBackground/OpeatPanel/Maximize/Label
-@onready var fold_button_label:Label = $TitleBackground/OpeatPanel/Fold/Label
+@onready var maximize_button_label:Label = $TitleBackground/OperatePanel/Maximize/Label
+@onready var fold_button_label:Label = $TitleBackground/OperatePanel/Fold/Label
 
 enum ColorChangeType{
 	ENTER,ESCAPE
@@ -27,13 +32,22 @@ enum ColorChangeType{
 
 # 当已初始化
 func _ready() -> void:
+	var operate_panel:GridContainer = $TitleBackground/OperatePanel
 	# 初始化操作面板(修改x位置和大小)
 	await get_tree().process_frame # 等待一帧
-	$TitleBackground/OpeatPanel.offset_left = \
-	  -30 * $TitleBackground/OpeatPanel.get_child_count()
-	$TitleBackground/OpeatPanel.size.x = \
-	  $TitleBackground/OpeatPanel.offset_left * -1
-	self.MIN_SIZE_X = 30 * $TitleBackground/OpeatPanel.get_child_count() + 30
+	operate_panel.offset_left = \
+	  -30 * operate_panel.get_child_count()
+	operate_panel.size.x = \
+	  operate_panel.offset_left * -1
+	self.MIN_SIZE_X = 30 * operate_panel.get_child_count() + 30
+	# 连接操作面板按钮的event信号
+	for nodes:Control in operate_panel.get_children():
+		nodes.gui_input.connect(self.screen_touch_state_update)
+
+# 更新手机触摸状态
+func screen_touch_state_update(event):
+	if event is InputEventScreenTouch:
+		self.is_screen_touched = event.is_pressed()
 
 # 当拖拽调整大小按钮
 func _on_drag(event: InputEvent,source :Control) -> void:
@@ -110,8 +124,10 @@ func plsyer_change_window_transform(event:InputEvent,source:Control):
 
 # 当关闭窗口
 func _on_close(event: InputEvent) -> void:
-	if event is InputEventMouseButton and \
-	  not event.is_pressed():
+	if (((event is InputEventMouseButton and
+	  not self.is_screen_touched) or # 电脑端点击 & 反正手机端重复点击
+	  event is InputEventScreenTouch) and # 手机端点击
+	  not event.is_pressed()): # 已按下
 		self.accept_event()
 		self.get_parent().queue_free()
 
@@ -142,7 +158,9 @@ func change_button_color(change_type:int,target:ColorRect):
  
 # 当最(大/小)化
 func _on_maximize(event: InputEvent,source: Control) -> void:
-	if event is InputEventMouseButton and \
+	if ((event is InputEventMouseButton and
+	  not self.is_screen_touched) or
+	  event is InputEventScreenTouch) and \
 	  not event.is_pressed():
 		self.accept_event()
 		# 进入全屏状态
@@ -192,7 +210,7 @@ func _on_maximize(event: InputEvent,source: Control) -> void:
 			self.adjust_size_button_label.get_parent().color = \
 			  Color(0.933, 0.439, 0.0, 0.608)
 
-# 全屏窗口尺寸做为窗口大小
+# 全屏窗口尺寸作为窗口大小
 func fullscreen_size_as_window_size() -> void:
 	if self.is_maximized:
 		self.set_anchors_preset(Control.PRESET_TOP_LEFT)
@@ -228,8 +246,18 @@ func fullscreen_size_as_window_size() -> void:
 
 # 当折叠窗口
 func _on_fold_window(event: InputEvent, source: Control) -> void:
-	if event is InputEventMouseButton and \
-	  not event.is_pressed():
+	if(
+		( # 手机端防止重复触摸 & 电脑端点击
+			event is InputEventMouseButton and
+			not self.is_screen_touched
+		) or # 手机端触摸
+		event is InputEventScreenTouch or
+		( # 手机端长按预览
+			event is InputEventMouseButton and
+			event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
+		)# 已按下
+	  ) and not event.is_pressed():
+
 		self.accept_event()
 		# 处理还原折叠
 		if not self.is_maximized:
@@ -260,8 +288,10 @@ func _on_fold_window(event: InputEvent, source: Control) -> void:
 # 当钉住窗口
 func _on_pin_window(event: InputEvent, source: Control) -> void:
 	self.accept_event()
-	if event is InputEventMouseButton and \
-	  event.is_pressed():
+	if ((event is InputEventMouseButton and
+	  not self.is_screen_touched) or
+	  event is InputEventScreenTouch) and \
+	  not event.is_pressed():
 		self.get_parent().top_level = not self.get_parent().top_level
 		source.get_child(0).text = "⎗" if \
 		  self.get_parent().top_level else "⎘"

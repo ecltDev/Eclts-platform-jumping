@@ -12,7 +12,8 @@ func _ready() -> void:
 # 玩家控制按键按下
 func _on_player_action(event: InputEvent) -> void:
 	# 可长按部分 同时检测按键和触屏
-	if event is InputEventMouseButton or \
+	if (event is InputEventMouseButton and
+	  event.button_index == MouseButton.MOUSE_BUTTON_LEFT) or \
 	  event is InputEventScreenTouch:
 		# 左右移动
 		if (self.name == "MoveLeft" or
@@ -31,6 +32,21 @@ func _on_player_action(event: InputEvent) -> void:
 			EGG.MainPlayer.respawn()
 
 	# 左键单点部分 不检测左键按下触屏 检测鼠标按钮事件
+	if (event is InputEventMouseButton and
+	  event.button_index == MouseButton.MOUSE_BUTTON_LEFT) and \
+	  not event.is_pressed():
+
+
+		# 显示按键
+		if self.name == "DisplayKeys":
+			$"../PlayerControl".visible = not $"../PlayerControl".visible
+
+		# 显示聊天
+		else:if self.name == "OpenChattyPanel":
+			$"../ChattyPanel".visible = not $"../ChattyPanel".visible
+
+	# 手机端可长按预览功能
+	#(感觉这个BUG挺好用就加进来了/折叠窗口也有这个)
 	if event is InputEventMouseButton and \
 	  not event.is_pressed():
 
@@ -38,16 +54,9 @@ func _on_player_action(event: InputEvent) -> void:
 		if self.name == "DisplayDebuggingOverlay":
 			$"../DebuggingOverlay".visible = not $"../DebuggingOverlay".visible
 
-		# 显示按键
-		else:if self.name == "DisplayKeys":
-			$"../PlayerControl".visible = not $"../PlayerControl".visible
-
-		# 显示聊天
-		else:if self.name == "OpenChattyPanel":
-			$"../ChattyPanel".visible = not $"../ChattyPanel".visible
-
 	# 设置按钮颜色变化(不在块内)
-	if event is InputEventMouseButton or \
+	if (event is InputEventMouseButton and
+	  event.button_index == MouseButton.MOUSE_BUTTON_LEFT) or \
 	  event is InputEventScreenTouch:
 		var key_color:Color
 		if event.is_pressed():

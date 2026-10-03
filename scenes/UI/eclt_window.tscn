@@ -52,7 +52,7 @@ text = "[i][color=gray]无标题[/color][/i]"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="OpeatPanel" type="GridContainer" parent="WindowBackground/TitleBackground" unique_id=527091661]
+[node name="OperatePanel" type="GridContainer" parent="WindowBackground/TitleBackground" unique_id=527091661]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -63,13 +63,13 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
 
-[node name="Pin" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=1274676231]
+[node name="Pin" type="ColorRect" parent="WindowBackground/TitleBackground/OperatePanel" unique_id=1274676231]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 color = Color(0.6666667, 0.6666667, 0.6666667, 1)
 
-[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OpeatPanel/Pin" unique_id=406885672]
+[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OperatePanel/Pin" unique_id=406885672]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,12 +85,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Fold" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=1944285153]
+[node name="Fold" type="ColorRect" parent="WindowBackground/TitleBackground/OperatePanel" unique_id=1944285153]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0.6666667, 0.6666667, 0.6666667, 1)
 
-[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OpeatPanel/Fold" unique_id=1606615595]
+[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OperatePanel/Fold" unique_id=1606615595]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,12 +106,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Maximize" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=342781405]
+[node name="Maximize" type="ColorRect" parent="WindowBackground/TitleBackground/OperatePanel" unique_id=342781405]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0.6666667, 0.6666667, 0.6666667, 1)
 
-[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OpeatPanel/Maximize" unique_id=2012942336]
+[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OperatePanel/Maximize" unique_id=2012942336]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,13 +128,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Close" type="ColorRect" parent="WindowBackground/TitleBackground/OpeatPanel" unique_id=1086424062]
+[node name="Close" type="ColorRect" parent="WindowBackground/TitleBackground/OperatePanel" unique_id=1086424062]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 8
 color = Color(0.35686275, 0.61960787, 0.35686275, 1)
 
-[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OpeatPanel/Close" unique_id=961365492]
+[node name="Label" type="Label" parent="WindowBackground/TitleBackground/OperatePanel/Close" unique_id=961365492]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -194,20 +194,20 @@ vertical_alignment = 1
 clip_text = true
 
 [connection signal="gui_input" from="WindowBackground/TitleBackground" to="WindowBackground" method="_on_drag" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_pin_window" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
-[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_mouse_entered" flags=18]
-[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Pin" to="WindowBackground" method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_fold_window" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
-[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_mouse_entered" flags=18]
-[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Fold" to="WindowBackground" method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_maximize" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
-[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_mouse_entered" flags=18]
-[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Maximize" to="WindowBackground" method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Close" to="WindowBackground" method="_on_close"]
-[connection signal="gui_input" from="WindowBackground/TitleBackground/OpeatPanel/Close" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
-[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OpeatPanel/Close" to="WindowBackground" method="_on_mouse_entered" flags=18]
-[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OpeatPanel/Close" to="WindowBackground" method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Pin" to="WindowBackground" method="_on_pin_window" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Pin" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
+[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OperatePanel/Pin" to="WindowBackground" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OperatePanel/Pin" to="WindowBackground" method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Fold" to="WindowBackground" method="_on_fold_window" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Fold" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
+[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OperatePanel/Fold" to="WindowBackground" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OperatePanel/Fold" to="WindowBackground" method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Maximize" to="WindowBackground" method="_on_maximize" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Maximize" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
+[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OperatePanel/Maximize" to="WindowBackground" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OperatePanel/Maximize" to="WindowBackground" method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Close" to="WindowBackground" method="_on_close"]
+[connection signal="gui_input" from="WindowBackground/TitleBackground/OperatePanel/Close" to="WindowBackground" method="_on_touch_entered_or_exited" flags=18]
+[connection signal="mouse_entered" from="WindowBackground/TitleBackground/OperatePanel/Close" to="WindowBackground" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="WindowBackground/TitleBackground/OperatePanel/Close" to="WindowBackground" method="_on_mouse_exited" flags=18]
 [connection signal="gui_input" from="WindowBackground/AdjustSize" to="WindowBackground" method="_on_drag" flags=18]
