@@ -40,8 +40,8 @@ func _on_drag(event: InputEvent,source :Control) -> void:
 	# 接收事件 阻止输入事件继续传播
 	self.accept_event()
 	if source.name == "TitleBackground" and \
-	  # 有项目设置自动转换 不开的话很麻烦
-	  event is InputEventMouseButton:
+	  (event is InputEventMouseButton or \
+	  event is InputEventScreenTouch):
 		# 移动窗口到顶层
 		var parent:Variant = self.get_parent().get_parent()
 		parent.move_child(self.get_parent(),
@@ -50,14 +50,17 @@ func _on_drag(event: InputEvent,source :Control) -> void:
 	if not self.is_maximized:
 		# Motion 和 Button 事件不同时存在
 		# 使用 Button/Screen 实例记录状态 再使用 Mootion/Drag 计算拖动
-		if event is InputEventMouseButton:
+		if event is InputEventScreenTouch or \
+		  event is InputEventMouseButton:
 			self.is_drag_bar_pressed = event.is_pressed()
 		# 计算拖拽
-		elif event is InputEventMouseMotion and \
+		elif (event is InputEventScreenDrag or
+		  event is InputEventMouseMotion) and \
 		  self.is_drag_bar_pressed:
 			self.plsyer_change_window_transform(event,source)
 	elif source.name == "AdjustSize" and \
-	  event is InputEventMouseButton:
+	  (event is InputEventMouseButton or \
+	  event is InputEventScreenTouch):
 		self.fullscreen_size_as_window_size()
 
 # 玩家改变窗口变换(大小和位置)
@@ -110,7 +113,8 @@ func plsyer_change_window_transform(event:InputEvent,source:Control):
 
 # 当关闭窗口
 func _on_close(event: InputEvent) -> void:
-	if event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		self.get_parent().queue_free()
@@ -142,7 +146,8 @@ func change_button_color(change_type:int,target:ColorRect):
  
 # 当最(大/小)化
 func _on_maximize(event: InputEvent,source: Control) -> void:
-	if event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		# 进入全屏状态
@@ -229,7 +234,8 @@ func fullscreen_size_as_window_size() -> void:
 # 当折叠窗口
 func _on_fold_window(event: InputEvent, source: Control) -> void:
 	# 啊啊啊 劳资把 and 和 or的优先级记反了 导致查了好久的BUG WTM***
-	if event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or
+	  event is InputEventMouseButton) and \
 	  not event.is_pressed():
 		self.accept_event()
 		# 处理还原折叠
@@ -261,7 +267,8 @@ func _on_fold_window(event: InputEvent, source: Control) -> void:
 # 当钉住窗口
 func _on_pin_window(event: InputEvent, source: Control) -> void:
 	self.accept_event()
-	if event is InputEventMouseButton and \
+	if (event is InputEventScreenTouch or \
+	  event is InputEventMouseButton) and \
 	  event.is_pressed():
 		self.get_parent().top_level = not self.get_parent().top_level
 		source.get_child(0).text = "⎗" if \
