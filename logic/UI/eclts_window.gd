@@ -228,7 +228,6 @@ func fullscreen_size_as_window_size() -> void:
 
 # 当折叠窗口
 func _on_fold_window(event: InputEvent, source: Control) -> void:
-	# 啊啊啊 劳资把 and 和 or的优先级记反了 导致查了好久的BUG WTM***
 	if event is InputEventMouseButton and \
 	  not event.is_pressed():
 		self.accept_event()

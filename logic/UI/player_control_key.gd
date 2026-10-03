@@ -12,8 +12,8 @@ func _ready() -> void:
 # 玩家控制按键按下
 func _on_player_action(event: InputEvent) -> void:
 	# 可长按部分 同时检测按键和触屏
-	if event is InputEventMouseButton:
-
+	if event is InputEventMouseButton or \
+	  event is InputEventScreenTouch:
 		# 左右移动
 		if (self.name == "MoveLeft" or
 		  self.name == "MoveRight" ):
@@ -47,7 +47,8 @@ func _on_player_action(event: InputEvent) -> void:
 			$"../ChattyPanel".visible = not $"../ChattyPanel".visible
 
 	# 设置按钮颜色变化(不在块内)
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton or \
+	  event is InputEventScreenTouch:
 		var key_color:Color
 		if event.is_pressed():
 			key_color = Color(1.0, 1.0, 1.0, 1.0)
