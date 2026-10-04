@@ -52,8 +52,8 @@ scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, -11, 0, 0, 11, 0, 11, -11)
 
 [node name="WallRight" type="Sprite2D" parent="Objects/Walls" unique_id=1648251064]
-position = Vector2(1128, 640)
-scale = Vector2(1.4545456, 57.454548)
+position = Vector2(6278.0005, 625)
+scale = Vector2(-467.02502, -0.090911426)
 texture = ExtResource("1_qrja6")
 centered = false
 offset = Vector2(0, -11)

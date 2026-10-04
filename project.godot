@@ -70,10 +70,6 @@ player_respawn={
 ]
 }
 
-[input_devices]
-
-pointing/android/enable_long_press_as_right_click=true
-
 [internationalization]
 
 locale/locale_filter_mode=0
@@ -88,5 +84,3 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true

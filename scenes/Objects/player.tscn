@@ -1,29 +1,88 @@
 [gd_scene format=3 uid="uid://cer0nqrxeefsq"]
 
 [ext_resource type="Script" uid="uid://ccsj4usjqnnay" path="res://logic/player.gd" id="1_fgka1"]
+[ext_resource type="Texture2D" uid="uid://d14mhb6fk0v3c" path="res://sprites/player_animation/Spike_Idle1.png" id="2_7en4m"]
 [ext_resource type="PackedScene" uid="uid://8ua0t006dkfm" path="res://scenes/UI/hud.tscn" id="2_ch301"]
+[ext_resource type="Texture2D" uid="uid://dqhg6qlxvh8ll" path="res://sprites/player_animation/Spike_Idle2.png" id="3_mjmfk"]
+[ext_resource type="Texture2D" uid="uid://7sitcgij4j5r" path="res://sprites/player_animation/Spike_Run1.png" id="4_2jryg"]
+[ext_resource type="Texture2D" uid="uid://bnorckm2tbot3" path="res://sprites/player_animation/Spike_Run2.png" id="5_liow4"]
+[ext_resource type="Texture2D" uid="uid://iritl2jnaswg" path="res://sprites/player_animation/Spike_Run3.png" id="6_o4k87"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_s5mkr"]
+[sub_resource type="Animation" id="Animation_wowba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7en4m")]
+}
 
-[sub_resource type="Gradient" id="Gradient_fgka1"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0.3764706, 0, 1)
+[sub_resource type="Animation" id="Animation_vdy4j"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_7en4m"), ExtResource("3_mjmfk")]
+}
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ch301"]
-gradient = SubResource("Gradient_fgka1")
+[sub_resource type="Animation" id="Animation_urogl"]
+resource_name = "run"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08435999, 0.17709333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_2jryg"), ExtResource("5_liow4"), ExtResource("6_o4k87")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3jrf"]
+_data = {
+&"RESET": SubResource("Animation_wowba"),
+&"idle": SubResource("Animation_vdy4j"),
+&"run": SubResource("Animation_urogl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8p0j"]
+size = Vector2(17.933, 10.843)
 
 [node name="Player" type="CharacterBody2D" unique_id=112312554]
 scale = Vector2(1.999482, 2.272121)
 script = ExtResource("1_fgka1")
 
-[node name="PlayerSpriteDemo" type="MeshInstance2D" parent="." unique_id=631007288]
-scale = Vector2(13.615999, 29.759996)
-mesh = SubResource("QuadMesh_s5mkr")
-texture = SubResource("GradientTexture1D_ch301")
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=470451629]
+position = Vector2(-0.484, -5.967)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("2_7en4m")
 
-[node name="PlayerCollision" type="CollisionPolygon2D" parent="." unique_id=778733004]
-scale = Vector2(0.851, 1.86)
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+[node name="PlayerAnimation" type="AnimationPlayer" parent="PlayerSprite" unique_id=591229424]
+libraries/ = SubResource("AnimationLibrary_k3jrf")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=680246838]
+position = Vector2(1.1920929e-07, 0)
+scale = Vector2(0.85099995, 1.8599998)
+shape = SubResource("RectangleShape2D_l8p0j")
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=847535605]
 position_smoothing_enabled = true
@@ -32,9 +91,11 @@ rotation_smoothing_enabled = true
 [node name="InteractDetect" type="Area2D" parent="." unique_id=1593457013]
 scale = Vector2(0.7937291, 0.77824587)
 
-[node name="InteractCollision" type="CollisionPolygon2D" parent="InteractDetect" unique_id=52583383]
-scale = Vector2(1.098, 2.4)
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractDetect" unique_id=1802311679]
+position = Vector2(1.1920929e-07, 9.5367415e-07)
+scale = Vector2(1.0721542, 2.3899899)
+shape = SubResource("RectangleShape2D_l8p0j")
+debug_color = Color(0, 0.7490196, 0.69803923, 0.41960785)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1243705013]
 

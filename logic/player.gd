@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-# 速度 Note:Velocity特指向指定方向移动(有速度有方向的量:矢量) Speed指任意方向的速度
+# 速度
+# NOTE:Velocity特指向指定方向移动(有速度有方向的量:矢量) Speed指任意方向的速度
 @export_range(0,500,10,"Speed") var SPEED:float = 260
 # 跳跃速度下降因子
 @export_range(0,1,0.01,"VSReduceFactor")
@@ -15,6 +16,14 @@ var rest_jumping_times:int = 2
 var last_overlapping_unit:Area2D
 # 是死亡的
 var is_dead:bool = false
+# 玩家精灵图片
+@onready var player_sprite:Sprite2D = $PlayerSprite
+# 玩家动画播放器
+@onready var player_animation:AnimationPlayer = $PlayerSprite/PlayerAnimation
+
+# 资源加载
+var jump_texture:Texture2D = preload("res://sprites/player_animation/Spike_Jump1.png")
+var fall_texture:Texture2D = preload("res://sprites/player_animation/Spike_Fall1.png")
 
 func _ready() -> void:
 	EGG.MainPlayer = self
@@ -22,7 +31,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# 重力
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		self.velocity += get_gravity() * delta
+		self.player_animation.current_animation = ""
 	# 按键控制移动
 	if not EGG.ISVirtualKeyMovementPressed:
 		if Input.is_physical_key_pressed(KEY_A):Input.action_press("move_player_left")
@@ -38,19 +48,33 @@ func _physics_process(delta: float) -> void:
 		# 没有输入时
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	# 使用 direction 设置x缩放
+	if direction != 0:
+		self.player_sprite.scale.x = direction
+
 	# 跳跃
 	if (Input.is_action_just_pressed("player_jump") and
 	  self.rest_jumping_times > 0):
 		velocity.y = JUMP_VELOCITY
 		self.rest_jumping_times -= 1
+		# 设置图片
+		self.player_sprite.texture = self.jump_texture
 	
 	elif Input.is_action_just_released("player_jump") and self.velocity.y<0:
 		self.velocity.y *= self.JUMPING_VELOCITY_REDUCE_FACTOR
+		# 设置图片
+		if not is_on_floor():
+			self.player_sprite.texture = self.fall_texture
 	move_and_slide()
-	
-	# 垂直跳跃次数
+
+	# 在地板上
 	if self.is_on_floor():
+		# 垂直跳跃次数
 		self.rest_jumping_times = 2
+		# 设置动画
+		if self.velocity.x == 0:
+			self.player_animation.current_animation = "idle"
+		else:self.player_animation.current_animation = "run"
 
 	# 交互和重生
 	if Input.is_action_just_pressed("player_operate"):EGG.MainPlayer.operate()

@@ -3,6 +3,8 @@ extends Panel
 
 # 它代表自己是否已按下
 var is_pressed:bool = false
+# 它代表手机是否已按下
+var is_pressed_screen:bool = false
 
 # 初始动作
 func _ready() -> void:
@@ -11,9 +13,12 @@ func _ready() -> void:
 		if OS.get_name() != "Android" or OS.get_name() == "iOS":$"../PlayerControl".visible = false
 # 玩家控制按键按下
 func _on_player_action(event: InputEvent) -> void:
+	# 手机按下检测
+	if event is InputEventScreenTouch:
+		self.is_pressed_screen = event.is_pressed()
 	# 可长按部分 同时检测按键和触屏
 	if (event is InputEventMouseButton and
-	  event.button_index == MouseButton.MOUSE_BUTTON_LEFT) or \
+	  not self.is_pressed_screen) or \
 	  event is InputEventScreenTouch:
 		# 左右移动
 		if (self.name == "MoveLeft" or
@@ -33,8 +38,7 @@ func _on_player_action(event: InputEvent) -> void:
 
 	# 左键单点部分 不检测左键按下触屏 检测鼠标按钮事件
 	if (event is InputEventMouseButton and
-	  event.button_index == MouseButton.MOUSE_BUTTON_LEFT) and \
-	  not event.is_pressed():
+	  not event.is_pressed()):
 
 
 		# 显示按键
