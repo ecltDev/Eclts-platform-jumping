@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://gcqw8vfsf6wh"]
+
+[ext_resource type="Script" uid="uid://b2cobvgwk7of0" path="res://logic/UI/classes/eclts_window_manager.gd" id="1_25ybu"]
+
+[node name="Control" type="Control" unique_id=974240406]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EcltsWindow" type="Control" parent="." unique_id=513384499]
+anchors_preset = 0
+offset_left = 616.0
+offset_top = 32.0
+offset_right = 1112.0
+offset_bottom = 504.0
+script = ExtResource("1_25ybu")
+window_title = "有标题"
+close_action = 0
+metadata/_custom_type_script = "uid://b2cobvgwk7of0"
