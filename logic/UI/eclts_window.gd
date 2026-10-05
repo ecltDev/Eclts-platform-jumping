@@ -13,6 +13,7 @@ var is_maximized:bool = false
 var is_folded:bool = false
 var is_folded_fullscreen:bool = false
 # 配置常量
+var delete_if_parent_is_window:bool = true
 var FOLD_SIZE_Y:float = 30
 var          MIN_SIZE_Y:float = 30
 @onready var MIN_SIZE_X:float
@@ -129,7 +130,10 @@ func _on_close(event: InputEvent) -> void:
 	  event is InputEventScreenTouch) and # 手机端点击
 	  not event.is_pressed()): # 已按下
 		self.accept_event()
-		self.get_parent().queue_free()
+		if self.get_parent().get_parent() is Window and \
+		  self.delete_if_parent_is_window:
+			self.get_parent().queue_free()
+		else:self.get_parent().visible = false
 
 # 当(进入/退出)按钮
 func _on_touch_entered_or_exited(event: InputEvent, source: ColorRect) -> void:

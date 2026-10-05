@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://cmft16lysvy1y"]
+
+[ext_resource type="Script" uid="uid://c4kv77v0cl6ps" path="res://logic/UI/eclts_window.gd" id="1_qmbri"]
+[ext_resource type="Texture2D" uid="uid://7sitcgij4j5r" path="res://sprites/player_animation/Spike_Run1.png" id="2_7u2kk"]
+[ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="3_gewkx"]
+
+[node name="WindowBackground" type="ColorRect" unique_id=2065689550]
+offset_right = 704.0
+offset_bottom = 384.0
+color = Color(0, 0, 0, 0.39215687)
+script = ExtResource("1_qmbri")
+
+[node name="TitleBackground" type="ColorRect" parent="." unique_id=626242913]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 6
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="IconTexture" type="TextureRect" parent="TitleBackground" unique_id=598646884]
+clip_contents = true
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource("2_7u2kk")
+expand_mode = 1
+
+[node name="TitleText" type="RichTextLabel" parent="TitleBackground" unique_id=643356419]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 32.0
+offset_right = -90.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_filter = 1
+theme = ExtResource("3_gewkx")
+bbcode_enabled = true
+text = "[i][color=gray]无标题[/color][/i]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="OperatePanel" type="GridContainer" parent="TitleBackground" unique_id=76590978]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 30.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="Pin" type="ColorRect" parent="TitleBackground/OperatePanel" unique_id=103817230]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+
+[node name="Label" type="Label" parent="TitleBackground/OperatePanel/Pin" unique_id=257494338]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 22
+text = "⎘"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Fold" type="ColorRect" parent="TitleBackground/OperatePanel" unique_id=82288764]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+
+[node name="Label" type="Label" parent="TitleBackground/OperatePanel/Fold" unique_id=706544111]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 22
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Maximize" type="ColorRect" parent="TitleBackground/OperatePanel" unique_id=1260626621]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+
+[node name="Label" type="Label" parent="TitleBackground/OperatePanel/Maximize" unique_id=1401918050]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.388
+offset_top = -9.0
+offset_right = 0.3880005
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "□"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Close" type="ColorRect" parent="TitleBackground/OperatePanel" unique_id=213100683]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_default_cursor_shape = 8
+color = Color(0.35686275, 0.61960787, 0.35686275, 1)
+
+[node name="Label" type="Label" parent="TitleBackground/OperatePanel/Close" unique_id=107780410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.9999995
+offset_top = -7.0
+offset_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "×"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="WindowContent" type="Control" parent="." unique_id=2059896055]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AdjustSize" type="ColorRect" parent="." unique_id=567048292]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+color = Color(0.93333334, 0.4392157, 0, 0.60784316)
+
+[node name="Label" type="Label" parent="AdjustSize" unique_id=1925434351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.9999995
+offset_top = -7.0
+offset_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "▨"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[connection signal="gui_input" from="TitleBackground" to="." method="_on_drag" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Pin" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Pin" to="." method="_on_pin_window" flags=18]
+[connection signal="mouse_entered" from="TitleBackground/OperatePanel/Pin" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="TitleBackground/OperatePanel/Pin" to="." method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Fold" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Fold" to="." method="_on_fold_window" flags=18]
+[connection signal="mouse_entered" from="TitleBackground/OperatePanel/Fold" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="TitleBackground/OperatePanel/Fold" to="." method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_maximize" flags=18]
+[connection signal="mouse_entered" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Close" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Close" to="." method="_on_close"]
+[connection signal="mouse_entered" from="TitleBackground/OperatePanel/Close" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="TitleBackground/OperatePanel/Close" to="." method="_on_mouse_exited" flags=18]
+[connection signal="gui_input" from="AdjustSize" to="." method="_on_drag" flags=18]
