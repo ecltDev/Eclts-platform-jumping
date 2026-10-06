@@ -1,5 +1,6 @@
 class_name EcltsWindow
 extends Control
+## 又称为窗口的root
 ## EcltWindow [b]有折叠 调整大小 关闭 全屏[/b] 等功能 [br]
 ## EcltWindow 默认会有一个父组件 这个父组件的锚点为
 ## [code]Control.PRESET_FULL_RECT[/code][br]
@@ -38,19 +39,22 @@ extends Control
 enum close_action_type{
 	HIDE,DELETE
 }
+
 # 状态标记
 var _nodes:Array[Node]
 ## 位于子节点的窗口
 var window:Control
+## 存放UI内容的节点
+var content:Control
 ## 窗口是隐藏的
 var is_hidden:bool = false:
 	set(value):self.visible = value
 	get:return self.visible
-# 窗口的位置和大小
+## 窗口的大小 改的时候会同步更改 必须在root(也就是EcltWindow)改才有效
 var window_size:Vector2:
 	set(value):self.window.size = value
 	get():return self.window.size
-# 窗口的位置
+## 窗口的位置 同上
 var window_position:Vector2:
 	set(value):self.window.position = value
 	get():return self.window.position
@@ -71,6 +75,7 @@ func _ready() -> void:
 		var main_window:Control = main_window_resource.instantiate()
 		self.add_child(main_window)
 		self.window = main_window
+		self.content = window.get_node("WindowContent")
 		# 设置标题和图标
 		main_window.window_icon = self.window_icon
 		main_window.window_title = self.window_title
@@ -78,13 +83,11 @@ func _ready() -> void:
 		main_window.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 		main_window.size = window_size + Vector2(0,30)
 		main_window.position = window_position
-		var content:Control = $WindowBackground/WindowContent
 		for node in self._nodes:
 			if node is Control:
 				# 待设置的位置
 				var node_position:Vector2 = node.position
-				print(node_position)
-				node.reparent(content)
+				node.reparent(self.content)
 				node.position = node_position
 		# 设置根的锚点 & 刷新窗口属性
 		self.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -101,3 +104,4 @@ func refresh_attributes() -> void:
 	self.window.close_action = self.close_action
 	# 刷新窗口面板
 	self.window.refresh_attributes()
+	self.content = window.content

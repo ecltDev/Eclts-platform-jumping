@@ -4,6 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://7sitcgij4j5r" path="res://sprites/player_animation/Spike_Run1.png" id="2_7u2kk"]
 [ext_resource type="Theme" uid="uid://buf52v2gfvmg3" path="res://resource/main_theme.tres" id="3_gewkx"]
 
+[sub_resource type="GDScript" id="GDScript_gi6d0"]
+resource_name = "_content_data"
+script/source = "extends Control
+## 这是WindowContent节点用于存数据的脚本
+
+## 窗口 即EcltWindow会自动创建的子节点
+var window:Control
+## 该Content组件所对应的EcltWindow
+var root:EcltsWindow
+"
+
 [node name="WindowBackground" type="ColorRect" unique_id=2065689550]
 offset_right = 704.0
 offset_bottom = 384.0
@@ -150,6 +161,7 @@ anchor_bottom = 1.0
 offset_top = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_gi6d0")
 
 [node name="AdjustSize" type="ColorRect" parent="." unique_id=567048292]
 custom_minimum_size = Vector2(30, 30)
@@ -184,20 +196,20 @@ vertical_alignment = 1
 clip_text = true
 
 [connection signal="gui_input" from="TitleBackground" to="." method="_on_drag" flags=18]
-[connection signal="gui_input" from="TitleBackground/OperatePanel/Pin" to="." method="_on_pin_window" flags=18]
 [connection signal="gui_input" from="TitleBackground/OperatePanel/Pin" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Pin" to="." method="_on_pin_window" flags=18]
 [connection signal="mouse_entered" from="TitleBackground/OperatePanel/Pin" to="." method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="TitleBackground/OperatePanel/Pin" to="." method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="TitleBackground/OperatePanel/Fold" to="." method="_on_fold_window" flags=18]
 [connection signal="gui_input" from="TitleBackground/OperatePanel/Fold" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Fold" to="." method="_on_fold_window" flags=18]
 [connection signal="mouse_entered" from="TitleBackground/OperatePanel/Fold" to="." method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="TitleBackground/OperatePanel/Fold" to="." method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_maximize" flags=18]
 [connection signal="gui_input" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_maximize" flags=18]
 [connection signal="mouse_entered" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="TitleBackground/OperatePanel/Maximize" to="." method="_on_mouse_exited" flags=18]
-[connection signal="gui_input" from="TitleBackground/OperatePanel/Close" to="." method="_on_close"]
 [connection signal="gui_input" from="TitleBackground/OperatePanel/Close" to="." method="_on_touch_entered_or_exited" flags=18]
+[connection signal="gui_input" from="TitleBackground/OperatePanel/Close" to="." method="_on_close"]
 [connection signal="mouse_entered" from="TitleBackground/OperatePanel/Close" to="." method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="TitleBackground/OperatePanel/Close" to="." method="_on_mouse_exited" flags=18]
 [connection signal="gui_input" from="AdjustSize" to="." method="_on_drag" flags=18]

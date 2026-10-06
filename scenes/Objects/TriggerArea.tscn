@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://0r76udjcouxw"]
+[gd_scene format=3 uid="uid://1peujrym703a"]
 
 [ext_resource type="Script" uid="uid://m33stjsmbkis" path="res://logic/components/trigger_area.gd" id="1_l0hny"]
 

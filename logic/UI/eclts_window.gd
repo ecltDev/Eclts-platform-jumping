@@ -14,6 +14,7 @@ var is_folded:bool = false
 var is_folded_fullscreen:bool = false
 var root:Control # 父组件
 var close_action:int # 关闭动作类型
+var content:Control # 内容组件
 # 配置常量
 var FOLD_SIZE_Y:float = 30
 var          MIN_SIZE_Y:float = 30
@@ -55,7 +56,11 @@ func _ready() -> void:
  
 # 刷新自定义属性
 func refresh_attributes() -> void:
+	# 窗口根组件和窗口内容组件属性
 	self.root = self.get_parent()
+	self.content = $WindowContent
+	self.content.window = self
+	self.content.root = self.root
 	# 最小窗口尺寸
 	self.MAX_SIZE_Y = self.root.size.y
 	self.MAX_SIZE_X = self.root.size.x
@@ -292,9 +297,13 @@ func _on_fold_window(event: InputEvent, source: Control) -> void:
 			# 设置或还原y大小 & 修改指针样式
 			if self.is_folded:
 				self.size.y = self.FOLD_SIZE_Y
-				if (self.size.x <= self.root.size.x and
-				  self.size.x > self.root.size.x - 30):
-					self.position.x -= 30
+				if ( # 防止调整大小按钮出界
+					self.size.x <= self.root.size.x and
+					self.size.x > self.root.size.x - 30 and
+					self.position.x < 30 and
+					self.position.x >= 0
+					):
+						self.position.x -= 30
 				self.adjust_size_button_label.get_parent() \
 				  .mouse_default_cursor_shape = CursorShape.CURSOR_HSIZE
 			else:

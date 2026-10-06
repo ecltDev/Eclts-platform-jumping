@@ -29,7 +29,7 @@
  - [x] @项目配置名称：`2DCaractorTest` → `ACATSPlatFromJumping`
  ##### 规范错误
  - [x] @函数 `Display_up_rising_text()` → `display_up_rising_text()`
- - [ ] &~~场景节点 `SAVE` → `SaveComponent`~~
+ - [x] &~~场景节点 `SAVE` → `SaveComponent`~~
  - [x] @节点 `RichTextLabel` 重命名为 `TextItem`
  - [x] @删除 project.godot 残留配置 `[global] aaa.custom=false`
  - [x] @清理重复场景文件 `trigger_area.tscn`（废弃版本）
@@ -40,9 +40,9 @@
 #### 2026/10/2
  - [x] !**手机端**窗口调整和移动**灵敏度**过大
  - [ ] +添加单例`GameLogger`
- - [ ] +添加类似MC的坐标轴指示器 并在调试界面显示
- - [ ] +添加组件`EcltWindow` 包含一个实例`WindowManager`
- - [ ] +添加单例`WindowManager`
+ - [x] +添加类似MC的坐标轴指示器 并在调试界面显示
+ - [x] +添加组件`EcltWindow`包含一个实例`WindowManager`
+ - [x] +添加单例`WindowManager`
 #### 2026/10/3
  - [x] !关闭模拟后手机端无法点击按钮和打开输入框
 	- 因为**某些信号会在手机上失效** 现已改为开启模拟方案
