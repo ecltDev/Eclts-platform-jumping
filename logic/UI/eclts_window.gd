@@ -1,5 +1,5 @@
 extends Control
-
+## EcltsWindow的逻辑实现部分
 #NOTE:手机端点击事件传入时序：
 #InputEventScreenTouch(pressed:true) -> InputEventScreenMouseButton(pressed:true)
 # -> InputEventScreenTouch(pressed:false) -> InputEventScreenMouseButton(pressed:false)
