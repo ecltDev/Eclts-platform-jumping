@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ljnkl37nmm8u"]
 
 [ext_resource type="Texture2D" uid="uid://cl5sh3pvshfce" path="res://sprites/Spikes_H.png" id="1_31rym"]
-[ext_resource type="Script" uid="uid://mbv3srja1tfi" path="res://Logic/components/collision_death.gd" id="2_i0yi4"]
+[ext_resource type="Script" uid="uid://mbv3srja1tfi" path="res://logic/components/collision_death.gd" id="2_i0yi4"]
 
 [node name="Spike" type="Node2D" unique_id=2088511812]
 
